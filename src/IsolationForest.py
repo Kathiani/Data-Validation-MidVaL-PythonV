@@ -1,36 +1,85 @@
 import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.ensemble import IsolationForest
+import time
+import os
 
-# Simular dados de temperatura
-np.random.seed(42)
-temperatures = np.random.normal(loc=42, scale=5, size=10)  # Dados normais
-temperatures = np.append(temperatures, [50, 55, 60])  # Adicionar valores anômalos
+def salvar_infos_em_arquivo(processing_time, fault, sensor_name, value, forecast, filename):
+    pasta_resultados = 'resultados'
+    if not os.path.exists(pasta_resultados):
+        os.makedirs(pasta_resultados)
 
-# Reshape dos dados para ajuste dos modelos
-temperatures = temperatures.reshape(-1, 1)
+    # Caminho completo para o arquivo dentro da pasta 'resultados'
+    caminho_arquivo = os.path.join(pasta_resultados, filename)
 
-# Modelo Isolation Forest
-iso_forest = IsolationForest(contamination=0.1, random_state=42)
-iso_forest.fit(temperatures)
-iso_preds = iso_forest.predict(temperatures)
+    with open(caminho_arquivo, 'a') as file:
+        file.write("\n\n")
+        file.write(f"Sensor Analisado = {str(sensor_name)}\n")
+        file.write(f"Valor Analisado = {str(value)}\n")
+        file.write(f"Resultado da Análise = {str(forecast)}\n")
+        file.write(f"Tempo de processamento = {processing_time:.4f}\n")
+        file.write(f"Erro identificado = {str(fault)}\n")
 
-# Visualizar os resultados
-plt.figure(figsize=(12, 6))
-plt.title("Isolation Forest para Validação de Dados de Temperatura")
-scatter = plt.scatter(np.arange(len(temperatures)), temperatures, c=iso_preds, cmap='coolwarm', s=100, edgecolor='k')
+def startisolationforest():
+    start_time = time.time()
+    sensor_name = 'sensor_data1.csv'
+    # Carregar dados do arquivo CSV
+    sensor_data = pd.read_csv(sensor_name)
 
-# Adicionar números aos pontos
-for i, txt in enumerate(temperatures):
-    plt.annotate(f'{txt[0]:.1f}', (i, temperatures[i]), textcoords="offset points", xytext=(0,10), ha='center')
+    # Supondo que a coluna de interesse seja a primeira coluna
+    temperatures = sensor_data.iloc[:, 0].values
 
-# Adicionar barra de cores
-plt.colorbar(scatter, label="Anomaly Score")
+    # Criar um array de timestamps (1 leitura por segundo)
+    timestamps = np.arange(len(temperatures))
 
-plt.xlabel("Index")
-plt.ylabel("Temperature")
-plt.tight_layout()
-plt.show()
+    # Reshape dos dados para ajuste do modelo
+    temperatures = temperatures.reshape(-1, 1)
 
-# Exibir os resultados
-print("Isolation Forest Predictions:", iso_preds)
+    # Definir os parâmetros para o modelo Isolation Forest
+    params = {
+        'n_estimators': 100,
+        'max_samples': 'auto',
+        'contamination': 0.1,
+        'max_features': 1.0,
+        'random_state': 42
+    }
+
+    # Ajustar o modelo
+    iso_forest = IsolationForest(**params)
+    iso_forest.fit(temperatures)
+    iso_preds = iso_forest.predict(temperatures)
+
+    end_time = time.time()
+    processing_time = end_time - start_time
+
+    if iso_preds[0] == -1:
+        error = "Verdadeiro"
+    else:
+        error = "Falso"
+
+    salvar_infos_em_arquivo(processing_time, error, sensor_name, temperatures[0][0], iso_preds[0], 'Resultados-IsolationForest.txt')
+
+    # Visualizar os resultados
+    plt.figure(figsize=(12, 6))
+    plt.title(f"Isolation Forest com parâmetros: {params}")
+    scatter = plt.scatter(np.arange(len(temperatures)), temperatures, c=iso_preds, cmap='coolwarm', s=100, edgecolor='k')
+
+    # Adicionar números aos pontos
+    for i, txt in enumerate(temperatures):
+        plt.annotate(f'{txt[0]:.1f}', (i, temperatures[i]), textcoords="offset points", xytext=(0, 10), ha='center')
+
+    # Adicionar barra de cores
+    plt.colorbar(scatter, label="Anomaly Score")
+
+    plt.xlabel("Index")
+    plt.ylabel("Temperature")
+    plt.tight_layout()
+    plt.show()
+
+    # Exibir os resultados
+    print(f"Parâmetros: {params}")
+    print("Isolation Forest Predictions:", iso_preds)
+
+    return error
+
