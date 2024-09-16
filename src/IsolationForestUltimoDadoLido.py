@@ -23,7 +23,7 @@ def salvar_infos_em_arquivo(processing_time, fault, sensor_name, value, forecast
 
 def startisolationforest():
     start_time = time.time()
-    sensor_name = 'sensor_data1.csv'
+    sensor_name = 'data/pessoas1.csv'
     # Carregar dados do arquivo CSV
     sensor_data = pd.read_csv(sensor_name)
 
@@ -58,7 +58,7 @@ def startisolationforest():
     else:
         error = "Falso"
 
-    salvar_infos_em_arquivo(processing_time, error, sensor_name, temperatures[0][0], iso_preds[0], 'Resultados-IsolationForest.txt')
+    salvar_infos_em_arquivo(processing_time, error, sensor_name, temperatures[0][0], iso_preds[0], 'resultados-UltimoDado.txt')
 
     # Visualizar os resultados
     plt.figure(figsize=(12, 6))

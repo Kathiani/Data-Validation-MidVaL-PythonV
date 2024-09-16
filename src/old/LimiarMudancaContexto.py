@@ -37,7 +37,7 @@ def verify_values_near_peak(data, abrupt_changes_indices, num_near=5, tolerance=
 
 if __name__ == "__main__":
     # Carregar os dados do sensor
-    data = load_sensor_data('sensor_data2.csv')
+    data = load_sensor_data('../dados/sets/sensor_data2.csv')
 
     # Definir o limiar para mudanças abruptas
     threshold = 5  # Ajuste conforme necessário

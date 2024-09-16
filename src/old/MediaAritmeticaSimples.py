@@ -16,7 +16,7 @@ if __name__ == "__main__":
     start_time = time.time()
 
     # Carregar os dados dos sensores
-    sensor_data1 = load_sensor_data('sensor_data1.csv')
+    sensor_data1 = load_sensor_data('../dados/sets/sensor_data1.csv')
 
       # Detectar outliers
     outliers1 = detect_outliers_mean(sensor_data1)

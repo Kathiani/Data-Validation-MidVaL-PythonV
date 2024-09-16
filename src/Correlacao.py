@@ -23,7 +23,7 @@ def salvar_infos_em_arquivo(sensorname, correlations, processing_time, valor, va
         max_sensor_id, max_correlation = max(correlations, key=lambda x: x[1])
 
         # Escreva o sensor com a maior correlação
-        file.write(f"Sensor Analisado = {str(sensorname)}\n")
+        file.write(f"\n\nSensor Analisado = {str(sensorname)}\n")
         file.write(f"Id Sensor correlato é {max_sensor_id} com Máxima Correlação = {max_correlation:.4f}\n")
         file.write(f"Tempo de processamento = {processing_time:.4f}\n")
         file.write(f"Valor Analisado = {str(valor)}\n")
@@ -62,6 +62,6 @@ def startrankeamento():
     end_time = time.time()
     processing_time = end_time - start_time
 
-    salvar_infos_em_arquivo(sensor_name, correlations, processing_time, first_value_sensor1, first_value_best_sensor, error, 'Resultados-Correlacao.txt')
+    salvar_infos_em_arquivo(sensor_name, correlations, processing_time, first_value_sensor1, first_value_best_sensor, error, 'resultados-Correlacao.txt')
 
     return error

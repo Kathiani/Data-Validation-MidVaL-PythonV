@@ -16,7 +16,7 @@ def salvar_infos_em_arquivo(sensorname,  processing_time, valor, fault, filename
 
     with open(caminho_arquivo, 'a') as file:
         # Escreva o sensor com a maior correlação
-        file.write(f"Sensor Analisado = {str(sensorname)}\n")
+        file.write(f"\n\nSensor Analisado = {str(sensorname)}\n")
         file.write(f"Tempo de processamento = {processing_time:.4f}\n")
         file.write(f"Valor Analisado = {str(valor)}\n")
         file.write(f"Erro identificado = {str(fault)}\n")
@@ -60,7 +60,7 @@ def startsvm():
     end_time = time.time()
     execution_time = end_time - start_time
 
-    salvar_infos_em_arquivo(sensor_name, execution_time, error, 'Resultados-SVM.txt')
+    salvar_infos_em_arquivo(sensor_name, execution_time, temperatures[0][0], error, 'resultados-SVM.txt')
 
 
     # Visualizar os resultados

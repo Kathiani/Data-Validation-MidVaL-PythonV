@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import time
 import os
 
-def salvar_infos_em_arquivo(processing_time, fault, filename):
+def salvar_infos_em_arquivo(processing_time, nome_sensor, valor, fault, filename):
     pasta_resultados = 'resultados'
     if not os.path.exists(pasta_resultados):
         os.makedirs(pasta_resultados)
@@ -13,6 +13,8 @@ def salvar_infos_em_arquivo(processing_time, fault, filename):
 
     with open(caminho_arquivo, 'a') as file:
         file.write("\n")
+        file.write(f"Sensor Analisado = {str(nome_sensor)}\n")
+        file.write(f"Valor Analisado = {str(valor)}\n")
         file.write(f"Tempo de processamento = {processing_time:.4f}\n")
         file.write(f"Erro identificado = {str(fault)}\n")
 
@@ -37,11 +39,13 @@ def startmediamovel():
     # Medir o tempo de execução
     start_time = time.time()
 
+    nome_do_sensor = 'sensor_data1.csv'
+
     # Carregar os dados dos sensores
-    sensor_data1 = load_sensor_data('sensor_data1.csv')
+    sensor_data1 = load_sensor_data(nome_do_sensor)
 
     # Definir o tamanho da janela para a média móvel
-    window_size = 5
+    window_size = 20
 
     # Detectar outliers usando média móvel
     outliers1, moving_means1, moving_stds1 = detect_outliers_moving_mean(sensor_data1, window_size)
@@ -54,7 +58,7 @@ def startmediamovel():
     processing_time = end_time - start_time
 
     # Salvar informações no arquivo
-    salvar_infos_em_arquivo(processing_time, first_value_outlier, 'Resultados-MediaMovel.txt')
+    salvar_infos_em_arquivo(processing_time, nome_do_sensor, sensor_data1[0], first_value_outlier, 'resultados-MediaMovel.txt')
 
     # Visualizar resultados para sensor 1
     plt.figure(figsize=(12, 6))

@@ -1,17 +1,17 @@
 
 from src.Correlacao import startrankeamento
-from src.IsolationForest import startisolationforest, salvar_infos_em_arquivo
 from src.MediaMovel import startmediamovel
-import time
+from src.IsolationForestSequencia import startisolationforest, startisolationforest
 import os
-
-from src.SvmOneClass import startsvm
+from src.SvmOneClassSequencia import startsvms
 
 if __name__ == "__main__":
-    startrankeamento()   #correlação
-    startisolationforest()   #isolationforest
-    startsvm()
 
+    nsensores = 1
+    nomesensor = 'carros'
+
+    #startisolationforest(nsensores, nomesensor, 'Isolation')   #isolationforest
+    startsvms(nsensores, nomesensor, 'SVM')
 
 
 
