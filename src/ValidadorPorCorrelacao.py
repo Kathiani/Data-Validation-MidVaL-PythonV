@@ -62,6 +62,6 @@ def startrankeamento():
     end_time = time.time()
     processing_time = end_time - start_time
 
-    salvar_infos_em_arquivo(sensor_name, correlations, processing_time, first_value_sensor1, first_value_best_sensor, error, 'resultados-Correlacao.txt')
+    salvar_infos_em_arquivo(sensor_name, correlations, processing_time, first_value_sensor1, first_value_best_sensor, error, 'resultados-correlacao.txt')
 
     return error

@@ -40,7 +40,7 @@ def startsvm():
     # Reshape dos dados para ajuste do modelo
     temperatures = temperatures.reshape(-1, 1)
 
-    # Ajustar o modelo One-Class SVM
+    # Ajustar o modelo One-Class svm
     ocsvm = OneClassSVM(gamma=0.1, nu=0.1)
     ocsvm.fit(temperatures)
 
@@ -60,7 +60,7 @@ def startsvm():
     end_time = time.time()
     execution_time = end_time - start_time
 
-    salvar_infos_em_arquivo(sensor_name, execution_time, temperatures[0][0], error, 'resultados-SVM.txt')
+    salvar_infos_em_arquivo(sensor_name, execution_time, temperatures[0][0], error, 'resultados-svm.txt')
 
 
     # Visualizar os resultados
@@ -72,7 +72,7 @@ def startsvm():
     # Plotar dados anômalos
     plt.scatter(timestamps[anomalous_indices], temperatures[anomalous_indices], c='blue', edgecolor='k', s=50, alpha=0.7, label='Anomaly')
 
-    plt.title("Detecção de Anomalias com One-Class SVM")
+    plt.title("Detecção de Anomalias com One-Class svm")
     plt.xlabel("Timestamp (seconds)")
     plt.ylabel("Temperature")
     plt.legend()

@@ -3,7 +3,7 @@ import pandas as pd
 from sklearn.svm import OneClassSVM
 import time
 import os
-from src.ComputaMetricas import startmetricas
+from src.CalculadoraDeMetricas import startmetricas
 
 
 def salvar_infos_em_arquivo(sensor_data, data, svm_preds, caminho_arquivo):
@@ -55,7 +55,7 @@ def startsvms(n_sensores, nomesensor, tecnica):
         # Reshape dos dados para ajuste do modelo
         data = data.reshape(-1, 1)
 
-        # Ajustar o modelo One-Class SVM
+        # Ajustar o modelo One-Class svm
         svm = OneClassSVM(gamma=0.1, nu=0.1)
         svm.fit(data)
 

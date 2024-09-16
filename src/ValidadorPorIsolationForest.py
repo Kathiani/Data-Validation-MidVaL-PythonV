@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from sklearn.ensemble import IsolationForest
 import time
 import os
-from src.ComputaMetricas import startmetricas
+from src.CalculadoraDeMetricas import startmetricas
 
 
 def salvar_infos_em_arquivo(sensor_data, data, forecasts, caminho_arquivo):
@@ -54,7 +54,7 @@ def startisolationforest(n_sensores, nomesensor, tecnica):
         # Reshape dos dados para ajuste do modelo
         temperatures = temperatures.reshape(-1, 1)
 
-        # Definir os parâmetros para o modelo Isolation Forest
+        # Definir os parâmetros para o modelo isolation Forest
         params = {
             'n_estimators': 100,
             'max_samples': 'auto',

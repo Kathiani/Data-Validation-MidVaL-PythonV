@@ -36,7 +36,7 @@ def startisolationforest():
     # Reshape dos dados para ajuste do modelo
     temperatures = temperatures.reshape(-1, 1)
 
-    # Definir os parâmetros para o modelo Isolation Forest
+    # Definir os parâmetros para o modelo isolation Forest
     params = {
         'n_estimators': 100,
         'max_samples': 'auto',
@@ -62,7 +62,7 @@ def startisolationforest():
 
     # Visualizar os resultados
     plt.figure(figsize=(12, 6))
-    plt.title(f"Isolation Forest com parâmetros: {params}")
+    plt.title(f"isolation Forest com parâmetros: {params}")
     scatter = plt.scatter(np.arange(len(temperatures)), temperatures, c=iso_preds, cmap='coolwarm', s=100, edgecolor='k')
 
     # Adicionar números aos pontos
@@ -79,7 +79,7 @@ def startisolationforest():
 
     # Exibir os resultados
     print(f"Parâmetros: {params}")
-    print("Isolation Forest Predictions:", iso_preds)
+    print("isolation Forest Predictions:", iso_preds)
 
     return error
 
