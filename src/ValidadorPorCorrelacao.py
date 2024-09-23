@@ -1,67 +1,104 @@
 import numpy as np
 import time
-import os
-
-#Localização e capability (filtro nos dados da Interscity)
-def load_sensor_data(filename):
-    return np.loadtxt(filename, delimiter=',')
+import pandas as pd
+from src.CalculadoraDeMetricas import startmetricas
+from src.CalculadoraDeMetricas import comparemetricas
 
 
 def calculate_correlation(data1, data2):
     correlation_matrix = np.corrcoef(data1, data2)
     return correlation_matrix[0, 1]  # Retorna apenas o coeficiente de correlação
 
-def salvar_infos_em_arquivo(sensorname, correlations, processing_time, valor, valorcomparado, fault, filename):
-    pasta_resultados = 'resultados'
-    if not os.path.exists(pasta_resultados):
-        os.makedirs(pasta_resultados)
 
-    # Caminho completo para o arquivo dentro da pasta 'resultados'
-    caminho_arquivo = os.path.join(pasta_resultados, filename)
+def salvar_infos_em_arquivo(sensor_data, data, outliers, caminho_arquivo):
+    # Avaliando
+    labels = sensor_data.iloc[:, 1].values
+    comparacao = []
 
-    with open(caminho_arquivo, 'a') as file:
-        max_sensor_id, max_correlation = max(correlations, key=lambda x: x[1])
+    for true, pred in zip(labels, outliers):
+        if true == 'correto' and pred == 1:
+            comparacao.append('VP')
+        elif true == 'incorreto' and pred == 1:
+            comparacao.append('FN')
+        elif true == 'correto' and pred == -1:
+            comparacao.append('FP')
+        elif true == 'incorreto' and pred == -1:
+            comparacao.append('VN')
+        else:
+            comparacao.append('Análise incorreta!')
 
-        # Escreva o sensor com a maior correlação
-        file.write(f"\n\nSensor Analisado = {str(sensorname)}\n")
-        file.write(f"Id Sensor correlato é {max_sensor_id} com Máxima Correlação = {max_correlation:.4f}\n")
-        file.write(f"Tempo de processamento = {processing_time:.4f}\n")
-        file.write(f"Valor Analisado = {str(valor)}\n")
-        file.write(f"Valor Comparado = {str(valorcomparado)}\n")
-        file.write(f"Erro identificado = {str(fault)}\n")
+        # Criar DataFrame para salvar os valores e previsões
+    df = pd.DataFrame({
+        'Dado': data.flatten(),
+        'Label': sensor_data.iloc[:, 1].values,
+        'Predição': ['P-correto' if pred == 1 else 'P-incorreto' for pred in outliers],
+        'Avaliação': comparacao
+    })
 
-def startrankeamento():
+    # Salvando o DataFrame como CSV
+    df.to_csv(caminho_arquivo, index=False)
+    #print(f"resultados salvos em {caminho_arquivo}")
+
+def startcalculocorrelacao(n_sensores, nomesensor, tecnica):
     start_time = time.time()
     limiar = 3
 
     # Carregar os dados do sensor 1
-    sensor_name =  'sensor_data1.csv'
-    sensor_data1 = load_sensor_data(sensor_name)
-    num_sensors = 10  # Número total de sensores
     correlations = []
 
-    # Calcular a correlação entre o sensor 1 e os demais sensores
-    for i in range(2, num_sensors + 1):
-        sensor_data = load_sensor_data(f'sensor_data{i}.csv')
-        correlation = calculate_correlation(sensor_data1, sensor_data)
-        correlations.append((i, correlation))
+    for i in range(1, n_sensores + 1):
+        sensor_name = f'dados/{nomesensor}{i}.csv'
+        #print(sensor_name)
 
-    # Ordenar as correlações em ordem decrescente
-    correlations.sort(key=lambda x: x[1], reverse=True)
-    best_sensor_id = correlations[0][0]
-    best_sensor_data = load_sensor_data(f'sensor_data{best_sensor_id}.csv')
+        # Carregar dados do arquivo CSV
+        sensor_data = pd.read_csv(sensor_name)
 
-    first_value_sensor1 = sensor_data1[0] #considerando a última leitura realizada
-    first_value_best_sensor = best_sensor_data[0] #obtendo a última leitura realizada
+        # Supondo que a coluna de interesse seja a primeira coluna
+        data = sensor_data.iloc[:, 0].values
 
-    if abs(first_value_sensor1 - first_value_best_sensor) >=limiar:
-        error = "Verdadeiro"
-    else:
-        error = "Falso"
 
-    end_time = time.time()
-    processing_time = end_time - start_time
+        # Calcular a correlação entre o sensor i e os demais sensores
+        for j in range(1, n_sensores + 1):
+            if i!=j:
+                proximo_sensor = pd.read_csv(f'dados/{nomesensor}{j}.csv')
+                data_proximo_sensor =  proximo_sensor.iloc[:, 0].values
+                correlation = calculate_correlation(data, data_proximo_sensor)
+                correlations.append((j, correlation))
+            #else:
+                #correlations.append((j, 0))
 
-    salvar_infos_em_arquivo(sensor_name, correlations, processing_time, first_value_sensor1, first_value_best_sensor, error, 'resultados-correlacao.txt')
 
-    return error
+        correlations.sort(key=lambda x: x[1], reverse=True)
+        #print(correlations)
+
+        best_sensor_id = correlations[0][0]
+        #print(best_sensor_id)
+        best_sensor_data = pd.read_csv(f'dados/{nomesensor}{best_sensor_id}.csv')
+        best_sensor_data = best_sensor_data.iloc[:, 0].values
+
+        #best_sensor_data = best_sensor_data.reshape(-1, 1)
+        #first_value_best_sensor = best_sensor_data[0]  # obtendo a última leitura realizada do sensor mais correlato
+
+        outliers = [None] * (len(data))
+
+        for k in range(0, len(data)):
+            value_sensor = data[k]  # fazer a leitura do último dado lido
+            if abs(value_sensor - best_sensor_data[k]) >= limiar:
+                  outliers[k] = -1
+            else:
+                  outliers[k] = 1
+
+        nomearquivo = f'ResultadosDiversidade-{nomesensor}{i}.csv'
+        caminho_arquivo = f'resultados/{tecnica}/{nomearquivo}'
+
+        # Corrigir a criação de diretórios
+        #dir_path = os.path.dirname(caminho_arquivo)
+        #if not os.path.exists(dir_path):
+            #os.makedirs(dir_path)
+
+
+
+        salvar_infos_em_arquivo(sensor_data, data, outliers, caminho_arquivo)
+        startmetricas(caminho_arquivo, tecnica)
+
+    comparemetricas(caminho_arquivo, tecnica)

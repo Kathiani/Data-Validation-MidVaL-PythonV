@@ -1,9 +1,9 @@
-from numpy.ma.core import concatenate
+
 from sklearn.metrics import precision_score, recall_score, f1_score
 import pandas as pd
-import os
 
-def startmetricas(caminho_arquivo):
+
+def startmetricas(caminho_arquivo, tecnica):
 
     df = pd.read_csv(caminho_arquivo)
 
@@ -22,6 +22,18 @@ def startmetricas(caminho_arquivo):
 
     # Salvar o DataFrame atualizado no mesmo arquivo CSV
     df.to_csv(caminho_arquivo, index=False)
+    #comparemetricas(caminho_arquivo, tecnica)
+
+def comparemetricas(caminho_arquivo, tecnica):
+
+    # Ler o CSV usando pandas
+    df = pd.read_csv(caminho_arquivo)
+
+    # Calcular a média da coluna 'F-Measure'
+    media_f_measure = df['F-Measure'].mean()
+
+    # Exibir o resultado
+    print(f"Média do F-Measure de {tecnica}: {media_f_measure}")
 
 
 

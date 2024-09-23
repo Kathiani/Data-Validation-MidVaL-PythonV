@@ -2,8 +2,8 @@
 import pandas as pd
 from sklearn.svm import OneClassSVM
 import time
-import os
 from src.CalculadoraDeMetricas import startmetricas
+from src.CalculadoraDeMetricas import comparemetricas
 
 
 def salvar_infos_em_arquivo(sensor_data, data, svm_preds, caminho_arquivo):
@@ -34,7 +34,7 @@ def salvar_infos_em_arquivo(sensor_data, data, svm_preds, caminho_arquivo):
 
     # Salvando o DataFrame como CSV
     df.to_csv(caminho_arquivo, index=False)
-    print(f"resultados salvos em {caminho_arquivo}")
+    #print(f"resultados salvos em {caminho_arquivo}")
 
 
 def startsvms(n_sensores, nomesensor, tecnica):
@@ -50,7 +50,7 @@ def startsvms(n_sensores, nomesensor, tecnica):
 
         # Supondo que a coluna de interesse seja a primeira coluna
         data = sensor_data.iloc[:, 0].values
-        print(sensor_data)
+        #print(sensor_data)
 
         # Reshape dos dados para ajuste do modelo
         data = data.reshape(-1, 1)
@@ -68,11 +68,11 @@ def startsvms(n_sensores, nomesensor, tecnica):
 
         nomearquivo = f'ResultadosSVM-{nomesensor}{i}.csv'
         caminho_arquivo = f'resultados/{tecnica}/{nomearquivo}'
-        if not os.path.exists(caminho_arquivo):
-            os.makedirs(caminho_arquivo)
 
-        salvar_infos_em_arquivo(sensor_data, data, svm_preds, nomearquivo)
-        startmetricas(caminho_arquivo)
 
+        salvar_infos_em_arquivo(sensor_data, data, svm_preds, caminho_arquivo)
+        startmetricas(caminho_arquivo, tecnica)
+
+    comparemetricas(caminho_arquivo, tecnica)
 
 

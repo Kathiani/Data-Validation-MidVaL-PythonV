@@ -39,10 +39,10 @@ def generate_sensor_data(num_sensors):
             os.makedirs(pasta_dados)
 
         # Caminho completo para o arquivo dentro da pasta 'dados'
-        caminho_arquivo = os.path.join(pasta_dados, f'carros{i}.csv')
+        caminho_arquivo = os.path.join(pasta_dados, f'pessoas{i}.csv')
 
         # Salvar os dados rotulados em um arquivo CSV
         np.savetxt(caminho_arquivo, labeled_data, delimiter=',', fmt='%s', header="Dados,Label", comments='')
 
 # Chamada da função para gerar os dados
-#generate_sensor_data(num_sensors=100)
+generate_sensor_data(num_sensors=10)

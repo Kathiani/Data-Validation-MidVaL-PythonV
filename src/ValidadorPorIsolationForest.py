@@ -1,10 +1,9 @@
-import numpy as np
+
 import pandas as pd
-import matplotlib.pyplot as plt
 from sklearn.ensemble import IsolationForest
 import time
-import os
 from src.CalculadoraDeMetricas import startmetricas
+from src.CalculadoraDeMetricas import comparemetricas
 
 
 def salvar_infos_em_arquivo(sensor_data, data, forecasts, caminho_arquivo):
@@ -36,7 +35,7 @@ def salvar_infos_em_arquivo(sensor_data, data, forecasts, caminho_arquivo):
 
     # Salvando o DataFrame como CSV
     df.to_csv(caminho_arquivo, index=False)
-    print(f"resultados salvos em {caminho_arquivo}")
+    #print(f"resultados salvos em {caminho_arquivo}")
 
 
 def startisolationforest(n_sensores, nomesensor, tecnica):
@@ -44,6 +43,7 @@ def startisolationforest(n_sensores, nomesensor, tecnica):
 
     for i in range(1, n_sensores + 1):
         sensor_name = f'dados/{nomesensor}{i}.csv'
+        #print(sensor_name)
 
         # Carregar dados do arquivo CSV
         sensor_data = pd.read_csv(sensor_name)
@@ -74,11 +74,10 @@ def startisolationforest(n_sensores, nomesensor, tecnica):
         # Rotular dados como 'correto' ou 'incorreto' baseado nas previsões (-1 = anomalia, 1 = normal)
         nomearquivo = f'ResultadosIsolation-{nomesensor}{i}.csv'
         caminho_arquivo = f'resultados/{tecnica}/{nomearquivo}'
-        if not os.path.exists(caminho_arquivo):
-            os.makedirs(caminho_arquivo)
+       
 
         salvar_infos_em_arquivo(sensor_data, temperatures, iso_preds,  caminho_arquivo)
-        startmetricas(caminho_arquivo)
+        startmetricas(caminho_arquivo, tecnica)
 
-
+    comparemetricas(caminho_arquivo, tecnica)
 
