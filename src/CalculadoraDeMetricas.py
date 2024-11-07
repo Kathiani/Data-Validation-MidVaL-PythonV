@@ -1,11 +1,13 @@
 
 from sklearn.metrics import precision_score, recall_score, f1_score
 import pandas as pd
+import os
+import csv
 
 
-def startmetricas(caminho_arquivo, tecnica):
+def computa_metricas(caminho_nome_arquivo):
 
-    df = pd.read_csv(caminho_arquivo)
+    df = pd.read_csv(caminho_nome_arquivo)
 
     df['Label_Cod'] = df['Label'].map({'correto': 1, 'incorreto': 0})
     df['Predicao_Cod'] = df['Predição'].map({'P-correto': 1, 'P-incorreto': 0})
@@ -20,20 +22,29 @@ def startmetricas(caminho_arquivo, tecnica):
     df['Recall'] = recall
     df['F-Measure'] = f_measure
 
-    # Salvar o DataFrame atualizado no mesmo arquivo CSV
-    df.to_csv(caminho_arquivo, index=False)
-    #comparemetricas(caminho_arquivo, tecnica)
+    # Salvar o dataFrame atualizado no mesmo arquivo do sensor
+    df.to_csv(caminho_nome_arquivo, index=False)
 
-def comparemetricas(caminho_arquivo, tecnica):
+def computa_media_metricas(caminho_arquivo, grupo_execucao, tempo_processamento_total, sensor):
 
-    # Ler o CSV usando pandas
     df = pd.read_csv(caminho_arquivo)
 
     # Calcular a média da coluna 'F-Measure'
     media_f_measure = df['F-Measure'].mean()
 
-    # Exibir o resultado
-    print(f"Média do F-Measure de {tecnica}: {media_f_measure}")
+    os.makedirs(os.path.dirname('resultados/resumo/'), exist_ok=True)
+
+    with open(f"{'resultados/resumo/'}F1-Measure-{grupo_execucao}-.csv", mode='a', newline='') as file:
+        writer = csv.writer(file)
+
+        # Escrevendo o cabeçalho se for o primeiro registro no arquivo
+        if file.tell() == 0:
+            writer.writerow(["Sensor","Grupo de Execução", "F1-Measure", "Tempo Processamento"])
+
+
+        writer.writerow([sensor, grupo_execucao, media_f_measure, tempo_processamento_total])
+
+
 
 
 

@@ -41,7 +41,7 @@ def startmediamovel():
 
     nome_do_sensor = 'sensor_data1.csv'
 
-    # Carregar os dados dos sensores
+    # Carregar os L1-10pt dos sensores
     sensor_data1 = load_sensor_data(nome_do_sensor)
 
     # Definir o tamanho da janela para a média móvel

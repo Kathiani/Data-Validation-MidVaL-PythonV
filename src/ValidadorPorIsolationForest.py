@@ -1,12 +1,12 @@
 
 import pandas as pd
+import time, os
 from sklearn.ensemble import IsolationForest
-import time
-from src.CalculadoraDeMetricas import startmetricas
-from src.CalculadoraDeMetricas import comparemetricas
+from src.CalculadoraDeMetricas import computa_metricas
+from src.CalculadoraDeMetricas import computa_media_metricas
 
 
-def salvar_infos_em_arquivo(sensor_data, data, forecasts, caminho_arquivo):
+def salvar_em_arquivo(sensor_data, data, forecasts, caminho_arquivo):
 
     # Avaliando verdadeiros positivos
     labels = sensor_data.iloc[:, 1].values
@@ -33,51 +33,63 @@ def salvar_infos_em_arquivo(sensor_data, data, forecasts, caminho_arquivo):
         'Avaliação': comparacao
     })
 
-    # Salvando o DataFrame como CSV
     df.to_csv(caminho_arquivo, index=False)
-    #print(f"resultados salvos em {caminho_arquivo}")
 
 
-def startisolationforest(n_sensores, nomesensor, tecnica):
-    start_time = time.time()
 
-    for i in range(1, n_sensores + 1):
-        sensor_name = f'dados/{nomesensor}{i}.csv'
-        #print(sensor_name)
+def startisolationforest(n_sensores, tecnica):
 
-        # Carregar dados do arquivo CSV
-        sensor_data = pd.read_csv(sensor_name)
+    tiposensor = 'temperatura'
+    tipo_erro = ['LossAccuracy', 'Drift', 'Noise', 'Bias', 'Freezing']
+    lote = 'L1'
 
-        # Supondo que a coluna de interesse seja a primeira coluna
-        temperatures = sensor_data.iloc[:, 0].values
 
-        # Reshape dos dados para ajuste do modelo
-        temperatures = temperatures.reshape(-1, 1)
+    for n in tipo_erro:
+        grupo_execucao = f'{tecnica}-{n}-{lote}'
 
-        # Definir os parâmetros para o modelo isolation Forest
-        params = {
-            'n_estimators': 100,
-            'max_samples': 'auto',
-            'contamination': 0.1,
-            'max_features': 1.0,
-            'random_state': 42
-        }
+        caminho_arquivo = f'resultados/{tecnica}/{n}/{grupo_execucao}'
+        os.makedirs(os.path.dirname(caminho_arquivo), exist_ok=True)  # Criar diretório para salvar numa primeira execução
 
-        # Ajustar o modelo
-        iso_forest = IsolationForest(**params)
-        iso_forest.fit(temperatures)
-        iso_preds = iso_forest.predict(temperatures)
+        for i in range(1, n_sensores + 1):
+            sensor_name = f'{n}-{tiposensor}{i}'
+            sensor_open = f'/home/kathiani/midval/dados/{tiposensor}/{lote}/{sensor_name}.csv' #Os arquivos foram salvos seguindo essa ordem
 
-        end_time = time.time()
-        processing_time = end_time - start_time
+            sensor_data = pd.read_csv(sensor_open)
 
-        # Rotular dados como 'correto' ou 'incorreto' baseado nas previsões (-1 = anomalia, 1 = normal)
-        nomearquivo = f'ResultadosIsolation-{nomesensor}{i}.csv'
-        caminho_arquivo = f'resultados/{tecnica}/{nomearquivo}'
-       
+            # Supondo que a coluna de interesse seja a primeira coluna
+            data = sensor_data.iloc[:, 0].values
 
-        salvar_infos_em_arquivo(sensor_data, temperatures, iso_preds,  caminho_arquivo)
-        startmetricas(caminho_arquivo, tecnica)
+            # Reshape dos L1-10pt para ajuste do modelo
+            data = data.reshape(-1, 1)
 
-    comparemetricas(caminho_arquivo, tecnica)
+            start_time = time.time()
+
+            # Definir os parâmetros para o modelo Isolation Forest
+            params = {
+                'n_estimators': 100,
+                'max_samples': 'auto',
+                'contamination': 0.1,
+                'max_features': 1.0,
+                'random_state': 42
+            }
+
+            # Ajustar o modelo
+            iso_forest = IsolationForest(**params)
+            iso_forest.fit(data)
+            iso_preds = iso_forest.predict(data)
+
+
+            end_time = time.time()
+            tempoprocessamento_atual = end_time - start_time
+
+
+            caminho_nome_arquivo = f'resultados/{tecnica}/{n}/{grupo_execucao}-{tiposensor}-{i}.csv'
+
+            salvar_em_arquivo(sensor_data, data, iso_preds, caminho_nome_arquivo)
+            computa_metricas(caminho_nome_arquivo)  # Computa e armazena F1-Score para o sensor atual
+            computa_media_metricas(caminho_nome_arquivo, grupo_execucao, tempoprocessamento_atual, i)
+
+
+
+
 

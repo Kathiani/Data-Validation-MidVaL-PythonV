@@ -2,7 +2,7 @@ import numpy as np
 import time
 import os
 
-#Localização e capability (filtro nos dados da Interscity)
+#Localização e capability (filtro nos L1-10pt da Interscity)
 def load_sensor_data(filename):
     return np.loadtxt(filename, delimiter=',')
 
@@ -34,7 +34,7 @@ def startrankeamento():
     start_time = time.time()
     limiar = 3
 
-    # Carregar os dados do sensor 1
+    # Carregar os L1-10pt do sensor 1
     sensor_name =  'sensor_data1.csv'
     sensor_data1 = load_sensor_data(sensor_name)
     num_sensors = 10  # Número total de sensores

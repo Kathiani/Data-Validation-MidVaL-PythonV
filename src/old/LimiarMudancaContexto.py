@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 
-# Função para carregar os dados do sensor
+# Função para carregar os L1-10pt do sensor
 def load_sensor_data(filename):
     return pd.read_csv(filename, header=None).values.flatten()
 
@@ -36,8 +36,8 @@ def verify_values_near_peak(data, abrupt_changes_indices, num_near=5, tolerance=
 
 
 if __name__ == "__main__":
-    # Carregar os dados do sensor
-    data = load_sensor_data('../dados/sets/sensor_data2.csv')
+    # Carregar os L1-10pt do sensor
+    data = load_sensor_data('../../dados/L1-10pt/sets/sensor_data2.csv')
 
     # Definir o limiar para mudanças abruptas
     threshold = 5  # Ajuste conforme necessário

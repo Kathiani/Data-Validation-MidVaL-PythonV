@@ -1,12 +1,13 @@
 
 import pandas as pd
+import os
 from sklearn.svm import OneClassSVM
 import time
-from src.CalculadoraDeMetricas import startmetricas
-from src.CalculadoraDeMetricas import comparemetricas
+from src.CalculadoraDeMetricas import computa_metricas
+from src.CalculadoraDeMetricas import computa_media_metricas
 
 
-def salvar_infos_em_arquivo(sensor_data, data, svm_preds, caminho_arquivo):
+def salvar_em_arquivo(sensor_data, data, svm_preds, caminho_arquivo):
 
     # Avaliando
     labels = sensor_data.iloc[:, 1].values
@@ -37,42 +38,49 @@ def salvar_infos_em_arquivo(sensor_data, data, svm_preds, caminho_arquivo):
     #print(f"resultados salvos em {caminho_arquivo}")
 
 
-def startsvms(n_sensores, nomesensor, tecnica):
+def startsvms(n_sensores, tecnica):
 
-    for i in range(1, n_sensores + 1):
+    tiposensor = 'temperatura'
+    tipo_erro = ['LossAccuracy', 'Drift', 'Noise', 'Bias', 'Freezing']
+    lote = 'L1'
 
-        start_time = time.time()
+    for n in tipo_erro:
 
-        sensor_name = f'dados/{nomesensor}{i}.csv'
+        grupo_execucao = f'{tecnica}-{n}-{lote}'
 
-        # Carregar dados do arquivo CSV
-        sensor_data = pd.read_csv(sensor_name)
-
-        # Supondo que a coluna de interesse seja a primeira coluna
-        data = sensor_data.iloc[:, 0].values
-        #print(sensor_data)
-
-        # Reshape dos dados para ajuste do modelo
-        data = data.reshape(-1, 1)
-
-        # Ajustar o modelo One-Class svm
-        svm = OneClassSVM(gamma=0.1, nu=0.1)
-        svm.fit(data)
-
-        # Fazer previsões
-        svm_preds = svm.predict(data)
+        caminho_arquivo = f'resultados/{tecnica}/{n}/{grupo_execucao}'
+        os.makedirs(os.path.dirname(caminho_arquivo),
+                    exist_ok=True)  # Criar diretório para salvar numa primeira execução
 
 
-        end_time = time.time()
-        execution_time = end_time - start_time
+        for i in range(1, n_sensores + 1):
 
-        nomearquivo = f'ResultadosSVM-{nomesensor}{i}.csv'
-        caminho_arquivo = f'resultados/{tecnica}/{nomearquivo}'
+            sensor_name = f'/home/kathiani/midval/dados/{tiposensor}/{lote}/{n}-{tiposensor}{i}.csv'
+
+            sensor_data = pd.read_csv(sensor_name)
+
+            data = sensor_data.iloc[:, 0].values
 
 
-        salvar_infos_em_arquivo(sensor_data, data, svm_preds, caminho_arquivo)
-        startmetricas(caminho_arquivo, tecnica)
+            # Reshape dos L1-10pt para ajuste do modelo
+            data = data.reshape(-1, 1)
 
-    comparemetricas(caminho_arquivo, tecnica)
+            start_time = time.time()
+            # Ajustar o modelo One-Class Svm
+            svm = OneClassSVM(gamma=0.1, nu=0.1)
+            svm.fit(data)
+
+            # Fazer previsões
+            svm_preds = svm.predict(data)
+
+            end_time = time.time()
+            tempoprocessamento_atual = end_time - start_time
+
+            caminho_nome_arquivo = f'resultados/{tecnica}/{n}/{grupo_execucao}-{tiposensor}-{i}.csv'
+
+            salvar_em_arquivo(sensor_data, data, svm_preds, caminho_nome_arquivo)
+            computa_metricas(caminho_nome_arquivo)  # Computa e armazena F1-Score para o sensor atual
+            computa_media_metricas(caminho_nome_arquivo, grupo_execucao, tempoprocessamento_atual, i)
+
 
 

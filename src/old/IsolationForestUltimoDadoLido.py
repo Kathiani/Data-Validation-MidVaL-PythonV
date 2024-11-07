@@ -24,7 +24,7 @@ def salvar_infos_em_arquivo(processing_time, fault, sensor_name, value, forecast
 def startisolationforest():
     start_time = time.time()
     sensor_name = 'data/pessoas1.csv'
-    # Carregar dados do arquivo CSV
+    # Carregar L1-10pt do arquivo CSV
     sensor_data = pd.read_csv(sensor_name)
 
     # Supondo que a coluna de interesse seja a primeira coluna
@@ -33,10 +33,10 @@ def startisolationforest():
     # Criar um array de timestamps (1 leitura por segundo)
     timestamps = np.arange(len(temperatures))
 
-    # Reshape dos dados para ajuste do modelo
+    # Reshape dos L1-10pt para ajuste do modelo
     temperatures = temperatures.reshape(-1, 1)
 
-    # Definir os parâmetros para o modelo isolation Forest
+    # Definir os parâmetros para o modelo Isolation Forest
     params = {
         'n_estimators': 100,
         'max_samples': 'auto',
@@ -62,7 +62,7 @@ def startisolationforest():
 
     # Visualizar os resultados
     plt.figure(figsize=(12, 6))
-    plt.title(f"isolation Forest com parâmetros: {params}")
+    plt.title(f"Isolation Forest com parâmetros: {params}")
     scatter = plt.scatter(np.arange(len(temperatures)), temperatures, c=iso_preds, cmap='coolwarm', s=100, edgecolor='k')
 
     # Adicionar números aos pontos
@@ -79,7 +79,7 @@ def startisolationforest():
 
     # Exibir os resultados
     print(f"Parâmetros: {params}")
-    print("isolation Forest Predictions:", iso_preds)
+    print("Isolation Forest Predictions:", iso_preds)
 
     return error
 

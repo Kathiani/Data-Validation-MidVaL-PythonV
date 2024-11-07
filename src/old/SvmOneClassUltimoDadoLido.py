@@ -28,7 +28,7 @@ def startsvm():
     np.random.seed(42)
 
     sensor_name = 'sensor_data1.csv'
-    # Carregar dados do arquivo CSV
+    # Carregar L1-10pt do arquivo CSV
     sensor_data = pd.read_csv(sensor_name)
 
     # Supondo que a coluna de interesse seja a primeira coluna
@@ -37,10 +37,10 @@ def startsvm():
     # Criar um array de timestamps (1 leitura por segundo)
     timestamps = np.arange(len(temperatures))
 
-    # Reshape dos dados para ajuste do modelo
+    # Reshape dos L1-10pt para ajuste do modelo
     temperatures = temperatures.reshape(-1, 1)
 
-    # Ajustar o modelo One-Class svm
+    # Ajustar o modelo One-Class Svm
     ocsvm = OneClassSVM(gamma=0.1, nu=0.1)
     ocsvm.fit(temperatures)
 
@@ -60,19 +60,19 @@ def startsvm():
     end_time = time.time()
     execution_time = end_time - start_time
 
-    salvar_infos_em_arquivo(sensor_name, execution_time, temperatures[0][0], error, 'resultados-svm.txt')
+    salvar_infos_em_arquivo(sensor_name, execution_time, temperatures[0][0], error, 'resultados-Svm.txt')
 
 
     # Visualizar os resultados
     plt.figure(figsize=(12, 6))
 
-    # Plotar dados normais
+    # Plotar L1-10pt normais
     plt.scatter(timestamps[normal_indices], temperatures[normal_indices], c='red', edgecolor='k', s=50, alpha=0.7, label='Normal')
 
-    # Plotar dados anômalos
+    # Plotar L1-10pt anômalos
     plt.scatter(timestamps[anomalous_indices], temperatures[anomalous_indices], c='blue', edgecolor='k', s=50, alpha=0.7, label='Anomaly')
 
-    plt.title("Detecção de Anomalias com One-Class svm")
+    plt.title("Detecção de Anomalias com One-Class Svm")
     plt.xlabel("Timestamp (seconds)")
     plt.ylabel("Temperature")
     plt.legend()

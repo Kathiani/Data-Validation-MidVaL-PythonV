@@ -15,8 +15,8 @@ if __name__ == "__main__":
     # Medir o tempo de execução
     start_time = time.time()
 
-    # Carregar os dados dos sensores
-    sensor_data1 = load_sensor_data('../dados/sets/sensor_data1.csv')
+    # Carregar os L1-10pt dos sensores
+    sensor_data1 = load_sensor_data('../../dados/L1-10pt/sets/sensor_data1.csv')
 
       # Detectar outliers
     outliers1 = detect_outliers_mean(sensor_data1)
