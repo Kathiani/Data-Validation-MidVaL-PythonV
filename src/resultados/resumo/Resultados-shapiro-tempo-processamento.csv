@@ -1,0 +1,36 @@
+Arquivo, Resultado Shapiro-Wilk, p-valor
+F1-Measure-svm-LossAccuracy-L1-.csv, Distribuição  Não Normal, 0.000000014497721
+F1-Measure-diversidade-LossAccuracy-L1-.csv, Distribuição Normal, 0.385224997997284
+F1-Measure-svm-Drift-L2-.csv, Distribuição Normal, 0.885513544082642
+F1-Measure-diversidade-Noise-L2-.csv, Distribuição  Não Normal, 0.000000064336014
+F1-Measure-svm-Freezing-L1-.csv, Distribuição  Não Normal, 0.000000086089635
+F1-Measure-isolation-LossAccuracy-L2-.csv, Distribuição  Não Normal, 0.001380348927341
+F1-Measure-isolation-Drift-L1-.csv, Distribuição Normal, 0.690061450004578
+F1-Measure-svm-Freezing-L2-.csv, Distribuição Normal, 0.053725033998489
+F1-Measure-diversidade-Bias-L2-.csv, Distribuição Normal, 0.090912498533726
+F1-Measure-svm-LossAccuracy-L2-.csv, Distribuição Normal, 0.170914292335510
+Resultados_mann_whitney.csv, Coluna 'F1-Measure' ausente, N/A
+F1-Measure-isolation-Bias-L1-.csv, Distribuição  Não Normal, 0.000000016758868
+F1-Measure-isolation-Noise-L1-.csv, Distribuição Normal, 0.411076813936234
+Resultados-shapiro.csv, Coluna 'F1-Measure' ausente, N/A
+F1-Measure-diversidade-Freezing-L1-.csv, Distribuição  Não Normal, 0.000120321674331
+F1-Measure-diversidade-Drift-L2-.csv, Distribuição Normal, 0.179811239242554
+F1-Measure-isolation-Freezing-L2-.csv, Distribuição  Não Normal, 0.000193150975974
+F1-Measure-diversidade-Noise-L1-.csv, Distribuição  Não Normal, 0.000005534773209
+F1-Measure-isolation-Bias-L2-.csv, Distribuição  Não Normal, 0.006013914942741
+F1-Measure-diversidade-LossAccuracy-L2-.csv, Distribuição Normal, 0.540323972702026
+F1-Measure-svm-Bias-L1-.csv, Distribuição Normal, 0.494612962007523
+F1-Measure-diversidade-Bias-L1-.csv, Distribuição  Não Normal, 0.000000000577378
+F1-Measure-isolation-Drift-L2-.csv, Distribuição  Não Normal, 0.017720345407724
+F1-Measure-diversidade-Freezing-L2-.csv, Distribuição  Não Normal, 0.000000001105537
+F1-Measure-diversidade-Drift-L1-.csv, Distribuição  Não Normal, 0.005634338129312
+Resultados-shapiro-tempo-processamento.csv, Erro ao processar o arquivo: No columns to parse from file, N/A
+F1-Measure-isolation-Freezing-L1-.csv, Distribuição Normal, 0.389659464359283
+F1-Measure-svm-Drift-L1-.csv, Distribuição  Não Normal, 0.000015444584278
+Media_geral_metricas.csv, Coluna 'F1-Measure' ausente, N/A
+F1-Measure-svm-Noise-L2-.csv, Distribuição Normal, 0.287102401256561
+F1-Measure-isolation-Noise-L2-.csv, Distribuição  Não Normal, 0.000623872969300
+F1-Measure-svm-Noise-L1-.csv, Distribuição Normal, 0.084645062685013
+F1-Measure-isolation-LossAccuracy-L1-.csv, Distribuição  Não Normal, 0.000000040355715
+F1-Measure-svm-Bias-L2-.csv, Distribuição Normal, 0.881536722183228
+Resultados_T_Student.csv, Coluna 'F1-Measure' ausente, N/A

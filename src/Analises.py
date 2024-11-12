@@ -12,7 +12,7 @@ def teste_shapiro():
     diretorio_resultado = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados/resumo'
 
     # Caminho completo para o arquivo onde os resultados serão salvos
-    arquivo_resultado = os.path.join(diretorio_resultado, 'Resultados-shapiro.csv')
+    arquivo_resultado = os.path.join(diretorio_resultado, 'Resultados-shapiro-tempo-processamento.csv')
 
     if not os.path.exists(diretorio_resultado):
         os.makedirs(diretorio_resultado)
@@ -30,9 +30,9 @@ def teste_shapiro():
                     df = pd.read_csv(caminho_arquivo)
 
                     # Verifica se a coluna 'F1-Measure' está presente
-                    if 'F1-Measure' in df.columns:
+                    if 'Tempo Processamento' in df.columns:
                         # Realiza o teste de Shapiro-Wilk
-                        estatistica, p_valor = shapiro(df['F1-Measure'])
+                        estatistica, p_valor = shapiro(df['Tempo Processamento'])
 
                         # Define o nível de significância (ex: 0.05)
                         alpha = 0.05
@@ -52,8 +52,8 @@ def teste_shapiro():
 def testTStudent(): #se os dados servem como distribuição normal
 
     # Especifique o caminho do arquivo para cada grupo
-    arquivo_grupo1 = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados/resumo/F1-Measure-isolation-Noise-L1-.csv'
-    arquivo_grupo2 = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados/resumo/F1-Measure-diversidade-Noise-L1-.csv'
+    arquivo_grupo1 = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados/resumo/F1-Measure-svm-Freezing-L1-.csv'
+    arquivo_grupo2 = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados/resumo/F1-Measure-diversidade-Freezing-L1-.csv'
     # Especifique o caminho do arquivo de saída para gravar os resultados
 
     pasta_saida = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados/resumo/'
@@ -82,7 +82,7 @@ def testTStudent(): #se os dados servem como distribuição normal
                     resultado = "Distribuições Diferentes" if p_valor < alpha else "Distribuições Iguais"
 
                     # Escreve o resultado no arquivo
-                    f.write(f"{arquivo_grupo1}, {arquivo_grupo2}, {resultado}, {p_valor:.15f}\n")
+                    f.write(f"{arquivo_grupo1}, {arquivo_grupo2}, {resultado}, {p_valor}\n")
                 else:
                     # Grupos insuficientes
                     f.write(f"{arquivo_grupo1}, {arquivo_grupo2}, Grupos insuficientes para o teste, N/A\n")
@@ -103,8 +103,8 @@ def testTStudent(): #se os dados servem como distribuição normal
 def testMannWhitney():
 
     # Especifique o caminho do arquivo para cada grupo
-    arquivo_grupo1 = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados/resumo/F1-Measure-isolation-Noise-L1-.csv'
-    arquivo_grupo2 = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados/resumo/F1-Measure-diversidade-Noise-L1-.csv'
+    arquivo_grupo1 = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados/resumo/F1-Measure-isolation-Noise-L2-.csv'
+    arquivo_grupo2 = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados/resumo/F1-Measure-svm-Noise-L2-.csv'
     # Especifique o caminho do arquivo de saída para gravar os resultados
 
     pasta_saida = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados/resumo/'
@@ -152,6 +152,6 @@ def testMannWhitney():
             f.write(f"Erro ao processar os arquivos {arquivo_grupo1} e {arquivo_grupo2}: {e}\n")
 
 
-#teste_shapiro()
-testTStudent()
+teste_shapiro()
+#testTStudent()
 #testMannWhitney()
