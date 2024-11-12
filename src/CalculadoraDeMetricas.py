@@ -46,5 +46,48 @@ def computa_media_metricas(caminho_arquivo, grupo_execucao, tempo_processamento_
 
 
 
+def computa_media_geral_metricas():
+
+    caminho_pasta = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados/resumo'
+
+    medias_resultados = []
+
+    # Loop por cada arquivo na pasta
+    for arquivo in os.listdir(caminho_pasta):
+        if arquivo.endswith('.csv'):  # Apenas processa arquivos CSV
+            caminho_arquivo = os.path.join(caminho_pasta, arquivo)
+
+            # Ler o arquivo CSV em um DataFrame
+            df = pd.read_csv(caminho_arquivo)
+
+            # Calcular a média da coluna 'F1-Measure' e 'Tempo Processamento'
+            media_f_measure = df['F1-Measure'].mean()
+            media_tempo_processamento = df['Tempo Processamento'].mean()
+
+            # Armazenar as médias com o nome do arquivo
+            medias_resultados.append((arquivo, media_f_measure, media_tempo_processamento))
+
+    # Calcular a média geral de F1-Measure e Tempo Processamento de todos os arquivos
+    media_geral_f_measure = sum(media_f for _, media_f, _ in medias_resultados) / len(medias_resultados)
+    media_geral_tempo_processamento = sum(media_t for _, _, media_t in medias_resultados) / len(medias_resultados)
+
+    # Caminho para o arquivo de resumo
+    caminho_resumo = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados/resumo/Media_geral_metricas.csv'
+    os.makedirs(os.path.dirname(caminho_resumo), exist_ok=True)
+
+    # Escrever as médias no arquivo de resumos
+    with open(caminho_resumo, mode='w', newline='') as file:
+        writer = csv.writer(file)
+
+        # Escrever o cabeçalho
+        writer.writerow(["Arquivo", "Média F1-Measure", "Média Tempo Processamento"])
+
+        # Adicionar as médias de cada arquivo
+        for arquivo, media_f, media_t in medias_resultados:
+            writer.writerow([arquivo, media_f, media_t])
+
+
+
+
 
 

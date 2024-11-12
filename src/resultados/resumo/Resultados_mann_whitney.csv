@@ -1,0 +1,22 @@
+Arquivo Grupo 1, Arquivo Grupo 2, Resultado, p-valor
+/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados/resumo/F1-Measure-isolation-Bias-L1-.csv, /home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados/resumo/F1-Measure-svm-Bias-L1-.csv, Distribuições Diferentes, 0.000000000557265
+Arquivo Grupo 1, Arquivo Grupo 2, Resultado, p-valor
+/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados/resumo/F1-Measure-isolation-Drift-L1-.csv, /home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados/resumo/F1-Measure-svm-Drift-L1-.csv, Distribuições Diferentes, 0.000000000021667
+Arquivo Grupo 1, Arquivo Grupo 2, Resultado, p-valor
+/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados/resumo/F1-Measure-isolation-Freezing-L1-.csv, /home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados/resumo/F1-Measure-svm-Freezing-L1-.csv, Distribuições Diferentes, 0.000000000029045
+Arquivo Grupo 1, Arquivo Grupo 2, Resultado, p-valor
+/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados/resumo/F1-Measure-isolation-LossAccuracy-L1-.csv, /home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados/resumo/F1-Measure-svm-LossAccuracy-L1-.csv, Distribuições Diferentes, 0.000094824116720
+Arquivo Grupo 1, Arquivo Grupo 2, Resultado, p-valor
+/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados/resumo/F1-Measure-isolation-Noise-L1-.csv, /home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados/resumo/F1-Measure-svm-Noise-L1-.csv, Distribuições Diferentes, 0.000000002317603
+Arquivo Grupo 1, Arquivo Grupo 2, Resultado, p-valor
+/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados/resumo/F1-Measure-diversidade-Bias-L1-.csv, /home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados/resumo/F1-Measure-isolation-Bias-L1-.csv, Distribuições Diferentes, 0.000000000030085
+Arquivo Grupo 1, Arquivo Grupo 2, Resultado, p-valor
+/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados/resumo/F1-Measure-diversidade-Drift-L1-.csv, /home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados/resumo/F1-Measure-isolation-Drift-L1-.csv, Distribuições Diferentes, 0.000000000021500
+Arquivo Grupo 1, Arquivo Grupo 2, Resultado, p-valor
+/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados/resumo/F1-Measure-diversidade-Drift-L1-.csv, /home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados/resumo/F1-Measure-isolation-Drift-L1-.csv, Distribuições Diferentes, 0.000000000021500
+Arquivo Grupo 1, Arquivo Grupo 2, Resultado, p-valor
+/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados/resumo/F1-Measure-diversidade-Freezing-L1-.csv, /home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados/resumo/F1-Measure-svm-Freezing-L1-.csv, Distribuições Diferentes, 0.000000000031041
+Arquivo Grupo 1, Arquivo Grupo 2, Resultado, p-valor
+/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados/resumo/F1-Measure-diversidade-LossAccuracy-L1-.csv, /home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados/resumo/F1-Measure-svm-LossAccuracy-L1-.csv, Distribuições Diferentes, 0.000000000030085
+Arquivo Grupo 1, Arquivo Grupo 2, Resultado, p-valor
+/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados/resumo/F1-Measure-isolation-Noise-L1-.csv, /home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados/resumo/F1-Measure-diversidade-Noise-L1-.csv, Distribuições Diferentes, 0.000000000030180

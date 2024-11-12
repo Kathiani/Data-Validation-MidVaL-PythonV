@@ -1,0 +1,31 @@
+Arquivo, Resultado Shapiro-Wilk, p-valor
+F1-Measure-svm-LossAccuracy-L1-.csv, Distribuição  Não Normal, 0.000000061634324
+F1-Measure-diversidade-LossAccuracy-L1-.csv, Distribuição  Não Normal, 0.000000004029787
+F1-Measure-svm-Drift-L2-.csv, Distribuição  Não Normal, 0.000000008136776
+F1-Measure-diversidade-Noise-L2-.csv, Distribuição  Não Normal, 0.000000000243367
+F1-Measure-svm-Freezing-L1-.csv, Distribuição Normal, 0.243345782160759
+F1-Measure-isolation-LossAccuracy-L2-.csv, Distribuição  Não Normal, 0.000000603508624
+F1-Measure-isolation-Drift-L1-.csv, Distribuição  Não Normal, 0.000180286049726
+F1-Measure-svm-Freezing-L2-.csv, Distribuição  Não Normal, 0.000000000010183
+F1-Measure-diversidade-Bias-L2-.csv, Distribuição  Não Normal, 0.000000000021558
+F1-Measure-svm-LossAccuracy-L2-.csv, Distribuição  Não Normal, 0.000000000019714
+F1-Measure-isolation-Bias-L1-.csv, Distribuição Normal, 0.805161118507385
+F1-Measure-isolation-Noise-L1-.csv, Distribuição Normal, 0.759943068027496
+F1-Measure-diversidade-Freezing-L1-.csv, Distribuição Normal, 0.078190930187702
+F1-Measure-diversidade-Drift-L2-.csv, Distribuição Normal, 0.737614750862122
+F1-Measure-isolation-Freezing-L2-.csv, Distribuição Normal, 0.305025011301041
+F1-Measure-diversidade-Noise-L1-.csv, Distribuição Normal, 0.812349796295166
+F1-Measure-isolation-Bias-L2-.csv, Distribuição Normal, 0.218220978975296
+F1-Measure-diversidade-LossAccuracy-L2-.csv, Distribuição  Não Normal, 0.000000001919862
+F1-Measure-svm-Bias-L1-.csv, Distribuição  Não Normal, 0.000001404255158
+F1-Measure-diversidade-Bias-L1-.csv, Distribuição  Não Normal, 0.000000000055146
+F1-Measure-isolation-Drift-L2-.csv, Distribuição  Não Normal, 0.000026498313673
+F1-Measure-diversidade-Freezing-L2-.csv, Distribuição Normal, 0.396006047725677
+F1-Measure-diversidade-Drift-L1-.csv, Distribuição Normal, 0.801777303218842
+F1-Measure-isolation-Freezing-L1-.csv, Distribuição  Não Normal, 0.045928630977869
+F1-Measure-svm-Drift-L1-.csv, Distribuição  Não Normal, 0.000000000070784
+F1-Measure-svm-Noise-L2-.csv, Distribuição  Não Normal, 0.000350913993316
+F1-Measure-isolation-Noise-L2-.csv, Distribuição  Não Normal, 0.011593756265938
+F1-Measure-svm-Noise-L1-.csv, Distribuição  Não Normal, 0.000028041149562
+F1-Measure-isolation-LossAccuracy-L1-.csv, Distribuição  Não Normal, 0.000000275188370
+F1-Measure-svm-Bias-L2-.csv, Distribuição  Não Normal, 0.004821829497814
