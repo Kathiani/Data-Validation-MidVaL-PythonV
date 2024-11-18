@@ -2,11 +2,10 @@
 import pandas as pd
 import time, os
 from sklearn.ensemble import IsolationForest
-from src.CalculadoraDeMetricas import computa_metricas
-from src.CalculadoraDeMetricas import computa_media_metricas
+from src.CalculadoraDeMetricas import computa_Fmeasure, computa_media_Fmeasure
 
 
-def salvar_em_arquivo(sensor_data, data, forecasts, caminho_arquivo):
+def salvar_predicoes_avaliacoes(sensor_data, forecasts, caminho_arquivo):
 
     # Avaliando verdadeiros positivos
     labels = sensor_data.iloc[:, 1].values
@@ -27,7 +26,7 @@ def salvar_em_arquivo(sensor_data, data, forecasts, caminho_arquivo):
 
     # Criar DataFrame para salvar os valores e previsões
     df = pd.DataFrame({
-        'Dado': data.flatten(),
+        'Dado': sensor_data.iloc[:, 0].values,
         'Label': sensor_data.iloc[:, 1].values,
         'Predição': ['P-correto' if pred == 1 else 'P-incorreto' for pred in forecasts],
         'Avaliação': comparacao
@@ -37,9 +36,9 @@ def salvar_em_arquivo(sensor_data, data, forecasts, caminho_arquivo):
 
 
 
-def startisolationforest(n_sensores, tecnica):
+def startisolationforest(n_sensores, tecnica, pasta_incorretos, pasta_resultados, pasta_resumo, tipo_sensor):
 
-    tiposensor = 'temperatura'
+
     tipo_erro = ['LossAccuracy', 'Drift', 'Noise', 'Bias', 'Freezing']
     lotes = ['L1', 'L2']
 
@@ -47,15 +46,14 @@ def startisolationforest(n_sensores, tecnica):
     for nlote in lotes:
         for n in tipo_erro:
             grupo_execucao = f'{tecnica}-{n}-{nlote}'
-
-            caminho_arquivo = f'resultados/{tecnica}/{n}/{nlote}/{grupo_execucao}/'
-            os.makedirs(os.path.dirname(caminho_arquivo), exist_ok=True)  # Criar diretório para salvar numa primeira execução
+            caminho_resultados = f'{pasta_resultados}/{tecnica}/{n}/{nlote}/'
+            os.makedirs(os.path.dirname(caminho_resultados),
+                        exist_ok=True)  # Criar diretório para salvar numa primeira execuç
 
             for i in range(1, n_sensores + 1):
-                sensor_name = f'{n}-{tiposensor}{i}'
-                sensor_open = f'/home/kathiani/midval/dados/{tiposensor}/{nlote}/{sensor_name}.csv' #Os arquivos foram salvos seguindo essa ordem
+                sensor_name = f'{pasta_incorretos}/{nlote}/{n}-{tipo_sensor}{i}.csv'
 
-                sensor_data = pd.read_csv(sensor_open)
+                sensor_data = pd.read_csv(sensor_name)
 
                 # Supondo que a coluna de interesse seja a primeira coluna
                 data = sensor_data.iloc[:, 0].values
@@ -83,12 +81,12 @@ def startisolationforest(n_sensores, tecnica):
                 end_time = time.time()
                 tempoprocessamento_atual = end_time - start_time
 
+                # Caminho para salvar os resultados do algoritmo para as leituras
+                caminho_nome_arquivo = f'{caminho_resultados}/{grupo_execucao}-{tipo_sensor}-{i}.csv'
 
-                caminho_nome_arquivo = f'{caminho_arquivo}/{grupo_execucao}-{tiposensor}-{i}.csv'
-
-                salvar_em_arquivo(sensor_data, data, iso_preds, caminho_nome_arquivo)
-                computa_metricas(caminho_nome_arquivo)  # Computa e armazena F1-Score para o sensor atual
-                computa_media_metricas(caminho_nome_arquivo, grupo_execucao, tempoprocessamento_atual, i)
+                salvar_predicoes_avaliacoes(sensor_data, iso_preds, caminho_nome_arquivo)
+                salvar_predicoes_avaliacoes(sensor_data, iso_preds, caminho_nome_arquivo)  # Computa e armazena predições para as leituras do sensor atual
+                computa_Fmeasure(caminho_nome_arquivo, pasta_resumo, grupo_execucao, i, tempoprocessamento_atual)                                  # Comp
 
 
 

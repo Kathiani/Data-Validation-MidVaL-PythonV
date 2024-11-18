@@ -53,7 +53,7 @@ def generate_sensor_data(num_sensors):
 def aplicar_ruido_demonstracao():
     # Parâmetros
     initial_values = [42, 42, 42, 43, 43, 43, 43, 44, 44, 44, 44, 45, 45 ,45 , 45]  # Valores iniciais de teste
-    drift(initial_values)
+    #drift(initial_values)
     #bias(initial_values)
     #freezing(initial_values)
     #loss_accuracy(initial_values)
@@ -220,6 +220,34 @@ def noise(initial_values):
     plt.grid()
     plt.show()
 
+
+
+def generate_sensor_data(num_sensors, indices_erroneos, pasta_dadoscorretos, pasta_dadosincorretos):
+    for i in range(1, num_sensors + 1):
+        normal_data = np.random.normal(loc=42, scale=0.5, size = 50)  # Dados normais, 8640
+       # normal_data = np.round(normal_data).astype(int)  # Arredondar
+        nomesensor = "temperatura" + str(i)
+        normal_data = normal_data.astype(int)
+
+        # Caminho completo para salvar os dados
+        caminho_arquivo = os.path.join(pasta_dadoscorretos, f'{nomesensor}.csv')
+
+        # Salvar os L1-10pt rotulados em um arquivo CSV
+        np.savetxt(caminho_arquivo, normal_data, delimiter=',', fmt='%s', header="Dados", comments='')
+
+
+        # Selecionar num_pontos_drift índices aleatórios da sequência para aplicar drift
+        indices_anomalos = random.sample(range(len(normal_data)), indices_erroneos)
+        meio = len(normal_data) // 2
+        indices_freezing = random.sample(range(meio, len(normal_data)), len(normal_data) - meio)
+
+
+        # Aplicar drift nos L1-10pt normais
+        drift(normal_data, indices_anomalos, nomesensor, pasta_dadosincorretos)
+        bias(normal_data, indices_anomalos, nomesensor, pasta_dadosincorretos)
+        freezing(normal_data, indices_freezing, nomesensor, pasta_dadosincorretos)
+        loss_accuracy(normal_data, indices_anomalos, nomesensor, pasta_dadosincorretos)
+        noise(normal_data, indices_anomalos, nomesensor, pasta_dadosincorretos)
 
 
 # Chamada da função para gerar os L1-10pt
