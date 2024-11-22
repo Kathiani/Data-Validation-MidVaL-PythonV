@@ -66,7 +66,7 @@ if __name__ == "__main__":
     plt.legend()
     plt.show()
 
-    # Mostrar resultados
+    # Mostrar resultados-series normais
     for idx, peak_value, next_values in results:
         print(f"Pico de mudança no índice {idx} com valor {peak_value}")
         print(f"Próximos 5 valores: {next_values}")

@@ -12,11 +12,11 @@ def calculate_correlation(data1, data2):
     return correlation_matrix[0, 1]  # Retorna apenas o coeficiente de correlação
 
 def salvar_infos_em_arquivo(sensorname, correlations, processing_time, valor, valorcomparado, fault, filename):
-    pasta_resultados = 'resultados'
+    pasta_resultados = 'resultados-series normais'
     if not os.path.exists(pasta_resultados):
         os.makedirs(pasta_resultados)
 
-    # Caminho completo para o arquivo dentro da pasta 'resultados'
+    # Caminho completo para o arquivo dentro da pasta 'resultados-series normais'
     caminho_arquivo = os.path.join(pasta_resultados, filename)
 
     with open(caminho_arquivo, 'a') as file:
@@ -62,6 +62,6 @@ def startrankeamento():
     end_time = time.time()
     processing_time = end_time - start_time
 
-    salvar_infos_em_arquivo(sensor_name, correlations, processing_time, first_value_sensor1, first_value_best_sensor, error, 'resultados-correlacao.txt')
+    salvar_infos_em_arquivo(sensor_name, correlations, processing_time, first_value_sensor1, first_value_best_sensor, error, 'resultados-series normais-correlacao.txt')
 
     return error

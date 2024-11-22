@@ -35,7 +35,7 @@ def salvar_predicoes_avaliacoes(sensor_data, svm_preds, caminho_arquivo):
 
     # Salvando o DataFrame como CSV
     df.to_csv(caminho_arquivo, index=False)
-    #print(f"resultados salvos em {caminho_arquivo}")
+    #print(f"resultados-series normais salvos em {caminho_arquivo}")
 
 
 def startsvms(n_sensores, tecnica,  pasta_dadosincorretos, pasta_resultados, pasta_resumo, tipo_sensor):

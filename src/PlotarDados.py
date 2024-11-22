@@ -4,17 +4,17 @@ import matplotlib.pyplot as plt
 #file_path = '/home/kathiani/midval/dados/temperatura/incorretos/L1/Bias-temperatura1.csv'
 
 
-def plotarerros():
+def plotardados_e_erros():
 
     # Substitua pelo caminho correto do seu arquivo CSV
-    file_path = '/home/kathiani/midval/dados/plot/temperatura/incorretos/L2/LossAccuracy-temperatura1.csv'
+    file_path = '/home/kathiani/midval/dados/temperatura-sazonais/incorretos/L2/LossAccuracy-temperatura1.csv'
 
     # Carregar o CSV e garantir nomes de colunas limpos
     data = pd.read_csv(file_path)
     data.columns = data.columns.str.strip()  # Remove espaços extras nos nomes das colunas
 
     # Filtrar os 20 primeiros pontos
-    data_firstpoints = data.head(100)
+    data_firstpoints = data.head(5000)
 
     # Obter índices e valores dos 20 primeiros
     x = data_firstpoints.index
@@ -42,7 +42,7 @@ def plotarerros():
     plt.grid(True)
 
     # Salvar o gráfico em um arquivo
-    output_path = '/home/kathiani/midval/dados/plot/temperatura/incorretos/LossAccuracy-temperatura1.png'
+    output_path = '/home/kathiani/midval/dados/plots/LossAccuracy-temperatura1.png'
     plt.savefig(output_path, bbox_inches='tight', dpi=300)  # Aumenta a resolução
 
     # Exibir o gráfico
@@ -50,4 +50,4 @@ def plotarerros():
 
 
 
-plotarerros()
+plotardados_e_erros()

@@ -11,10 +11,10 @@ import os
 
 if __name__ == "__main__":
 
-    pasta_dadoscorretos = '/home/kathiani/midval/dados/sazonais/temperatura/corretos/'
-    pasta_dadosincorretos = '/home/kathiani/midval/dados/sazonais/temperatura/incorretos/'
-    pasta_resultados = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados/'
-    pasta_resumo = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados/resumo/'
+    pasta_dadoscorretos = '/home/kathiani/midval/dados/temperatura-sazonais/corretos'
+    pasta_dadosincorretos = '/home/kathiani/midval/dados/temperatura-sazonais/incorretos'
+    pasta_resultados = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados-sazonais'
+    pasta_resumo = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados-sazonais/resumo/'
     if not os.path.exists(pasta_resultados):
         os.makedirs(pasta_resultados)
 
@@ -22,7 +22,7 @@ if __name__ == "__main__":
         os.makedirs(pasta_resumo)
 
     tipo_sensor = 'temperatura'
-    n_sensores = 3
+    n_sensores = 30
 
 
     startisolationforest(n_sensores,'isolation', pasta_dadosincorretos, pasta_resultados, pasta_resumo, tipo_sensor) #fixos os números dos lotes

@@ -25,7 +25,7 @@ if __name__ == "__main__":
     end_time = time.time()
     execution_time = end_time - start_time
 
-    # Visualizar resultados para sensor 1
+    # Visualizar resultados-series normais para sensor 1
     plt.figure(figsize=(12, 6))
     plt.plot(sensor_data1, label='Sensor Data 1')
     plt.axhline(np.mean(sensor_data1), color='green', linestyle='--', label='Mean 1')

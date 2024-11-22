@@ -40,7 +40,7 @@ def salvar_predicoes_avaliacoes(sensor_data, outliers, caminho_arquivo):
 
     # Salvando o DataFrame como CSV
     df.to_csv(caminho_arquivo, index=False)
-    #print(f"resultados salvos em {caminho_arquivo}")
+    #print(f"resultados-series normais salvos em {caminho_arquivo}")
 
 def startcalculocorrelacaot(n_sensores, tecnica, pasta_dadoscorretos, pasta_dadosincorretos, pasta_resultados, pasta_resumo, tipo_sensor):
     tipo_erro = ['LossAccuracy', 'Drift', 'Noise', 'Bias', 'Freezing']
@@ -97,7 +97,7 @@ def startcalculocorrelacaot(n_sensores, tecnica, pasta_dadoscorretos, pasta_dado
                         end_time = time.time()
                         tempoprocessamento_atual = end_time - start_time
 
-                        #Caminho para salvar os resultados do algoritmo para as leituras
+                        #Caminho para salvar os resultados-series normais do algoritmo para as leituras
                         caminho_nome_arquivo = f'{caminho_resultados}/{grupo_execucao}-{tipo_sensor}-{i}.csv'
 
                         salvar_predicoes_avaliacoes(sensor_data, outliers, caminho_nome_arquivo)  # Computa e armazena predições para as leituras do sensor atua

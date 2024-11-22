@@ -37,7 +37,7 @@ def salvar_em_arquivo(sensor_data, data, outliers, caminho_arquivo):
 
     # Salvando o DataFrame como CSV
     df.to_csv(caminho_arquivo, index=False)
-    #print(f"resultados salvos em {caminho_arquivo}")
+    #print(f"resultados-series normais salvos em {caminho_arquivo}")
 
 def startcalculocorrelacao(n_sensores, tecnica):
     tiposensor = 'temperatura'

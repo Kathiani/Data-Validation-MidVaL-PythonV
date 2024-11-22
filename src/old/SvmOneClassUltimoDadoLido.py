@@ -7,11 +7,11 @@ import os
 
 
 def salvar_infos_em_arquivo(sensorname,  processing_time, valor, fault, filename):
-    pasta_resultados = 'resultados'
+    pasta_resultados = 'resultados-series normais'
     if not os.path.exists(pasta_resultados):
         os.makedirs(pasta_resultados)
 
-    # Caminho completo para o arquivo dentro da pasta 'resultados'
+    # Caminho completo para o arquivo dentro da pasta 'resultados-series normais'
     caminho_arquivo = os.path.join(pasta_resultados, filename)
 
     with open(caminho_arquivo, 'a') as file:
@@ -60,10 +60,10 @@ def startsvm():
     end_time = time.time()
     execution_time = end_time - start_time
 
-    salvar_infos_em_arquivo(sensor_name, execution_time, temperatures[0][0], error, 'resultados-Svm.txt')
+    salvar_infos_em_arquivo(sensor_name, execution_time, temperatures[0][0], error, 'resultados-series normais-Svm.txt')
 
 
-    # Visualizar os resultados
+    # Visualizar os resultados-series normais
     plt.figure(figsize=(12, 6))
 
     # Plotar L1-10pt normais

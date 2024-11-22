@@ -6,18 +6,18 @@ import pandas as pd
 
 def teste_shapiro():
     # Diretório onde os arquivos CSV estão localizados
-    diretorio_csv = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados/resumo'
+    diretorio_csv = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados-series normais/resumo'
 
-    # Diretório onde o arquivo de resultados será salvo
-    diretorio_resultado = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados/resumo'
+    # Diretório onde o arquivo de resultados-series normais será salvo
+    diretorio_resultado = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados-series normais/resumo'
 
-    # Caminho completo para o arquivo onde os resultados serão salvos
-    arquivo_resultado = os.path.join(diretorio_resultado, 'Resultados-shapiro-tempo-processamento.csv')
+    # Caminho completo para o arquivo onde os resultados-series normais serão salvos
+    arquivo_resultado = os.path.join(diretorio_resultado, 'Resultados-shapiro-TempoProcessamento.csv')
 
     if not os.path.exists(diretorio_resultado):
         os.makedirs(diretorio_resultado)
 
-    # Abre o arquivo de resultados em modo de escrita
+    # Abre o arquivo de resultados-series normais em modo de escrita
     with open(arquivo_resultado, 'w') as f:
         f.write("Arquivo, Resultado Shapiro-Wilk, p-valor\n")
 
@@ -30,9 +30,9 @@ def teste_shapiro():
                     df = pd.read_csv(caminho_arquivo)
 
                     # Verifica se a coluna 'F1-Measure' está presente
-                    if 'Tempo Processamento' in df.columns:
+                    if 'Tempo Processa Sensor' in df.columns:
                         # Realiza o teste de Shapiro-Wilk
-                        estatistica, p_valor = shapiro(df['Tempo Processamento'])
+                        estatistica, p_valor = shapiro(df['Tempo Processa Sensor'])
 
                         # Define o nível de significância (ex: 0.05)
                         alpha = 0.05
@@ -52,11 +52,11 @@ def teste_shapiro():
 def testTStudent(): #se os dados servem como distribuição normal
 
     # Especifique o caminho do arquivo para cada grupo
-    arquivo_grupo1 = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados/resumo/F1-Measure-svm-Freezing-L1-.csv'
-    arquivo_grupo2 = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados/resumo/F1-Measure-diversidade-Freezing-L1-.csv'
-    # Especifique o caminho do arquivo de saída para gravar os resultados
+    arquivo_grupo1 = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados-series normais/resumo/F1-Measure-isolation-Noise-L1-.csv'
+    arquivo_grupo2 = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados-series normais/resumo/F1-Measure-diversidade-Noise-L1-.csv'
+    # Especifique o caminho do arquivo de saída para gravar os resultados-series normais
 
-    pasta_saida = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados/resumo/'
+    pasta_saida = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados-series normais/resumo/'
     arquivo_saida = os.path.join(pasta_saida, 'Resultados_T_Student.csv')
 
     with open(arquivo_saida, 'a') as f:
@@ -68,10 +68,10 @@ def testTStudent(): #se os dados servem como distribuição normal
             df_grupo2 = pd.read_csv(arquivo_grupo2)
 
             # Verifica se a coluna 'F1-Measure' está presente em ambos os arquivos
-            if 'F1-Measure' in df_grupo1.columns and 'F1-Measure' in df_grupo2.columns:
+            if 'F1-Measure' in df_grupo1.columns and 'Tempo Processa Sensor' in df_grupo2.columns:
                 # Seleciona a coluna 'F1-Measure' para cada grupo
-                grupo1 = df_grupo1['F1-Measure']
-                grupo2 = df_grupo2['F1-Measure']
+                grupo1 = df_grupo1['Tempo Processa Sensor']
+                grupo2 = df_grupo2['Tempo Processa Sensor']
 
 
                 if len(grupo1) > 1 and len(grupo2) > 1:
@@ -103,12 +103,12 @@ def testTStudent(): #se os dados servem como distribuição normal
 def testMannWhitney():
 
     # Especifique o caminho do arquivo para cada grupo
-    arquivo_grupo1 = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados/resumo/F1-Measure-isolation-Noise-L2-.csv'
-    arquivo_grupo2 = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados/resumo/F1-Measure-svm-Noise-L2-.csv'
-    # Especifique o caminho do arquivo de saída para gravar os resultados
+    arquivo_grupo1 = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados-series normais/resumo/F1-Measure-svm-LossAccuracy-L2-.csv'
+    arquivo_grupo2 = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados-series normais/resumo/F1-Measure-diversidade-LossAccuracy-L2-.csv'
+    # Especifique o caminho do arquivo de saída para gravar os resultados-series normais
 
-    pasta_saida = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados/resumo/'
-    arquivo_saida = os.path.join(pasta_saida, 'Resultados_mann_whitney.csv')
+    pasta_saida = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados-series normais/resumo/'
+    arquivo_saida = os.path.join(pasta_saida, 'Resultados_mann_whitney_TempoProcessamento.csv')
 
 
     with open(arquivo_saida, 'a') as f:
@@ -120,10 +120,10 @@ def testMannWhitney():
             df_grupo2 = pd.read_csv(arquivo_grupo2)
 
             # Verifica se a coluna 'F1-Measure' está presente em ambos os arquivos
-            if 'F1-Measure' in df_grupo1.columns and 'F1-Measure' in df_grupo2.columns:
+            if 'F1-Measure' in df_grupo1.columns and 'Tempo Processa Sensor' in df_grupo2.columns:
                 # Seleciona a coluna 'F1-Measure' para cada grupo
-                grupo1 = df_grupo1['F1-Measure']
-                grupo2 = df_grupo2['F1-Measure']
+                grupo1 = df_grupo1['Tempo Processa Sensor']
+                grupo2 = df_grupo2['Tempo Processa Sensor']
 
                 # Verifica se ambos os grupos têm dados suficientes para o teste
                 if len(grupo1) > 1 and len(grupo2) > 1:
@@ -152,6 +152,6 @@ def testMannWhitney():
             f.write(f"Erro ao processar os arquivos {arquivo_grupo1} e {arquivo_grupo2}: {e}\n")
 
 
-teste_shapiro()
+#teste_shapiro()  #Alterar variáveis para as quais se quer fazer o teste
 #testTStudent()
-#testMannWhitney()
+testMannWhitney()

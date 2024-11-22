@@ -4,11 +4,11 @@ import time
 import os
 
 def salvar_infos_em_arquivo(processing_time, nome_sensor, valor, fault, filename):
-    pasta_resultados = 'resultados'
+    pasta_resultados = 'resultados-series normais'
     if not os.path.exists(pasta_resultados):
         os.makedirs(pasta_resultados)
 
-    # Caminho completo para o arquivo dentro da pasta 'resultados'
+    # Caminho completo para o arquivo dentro da pasta 'resultados-series normais'
     caminho_arquivo = os.path.join(pasta_resultados, filename)
 
     with open(caminho_arquivo, 'a') as file:
@@ -58,9 +58,9 @@ def startmediamovel():
     processing_time = end_time - start_time
 
     # Salvar informações no arquivo
-    salvar_infos_em_arquivo(processing_time, nome_do_sensor, sensor_data1[0], first_value_outlier, 'resultados-MediaMovel.txt')
+    salvar_infos_em_arquivo(processing_time, nome_do_sensor, sensor_data1[0], first_value_outlier, 'resultados-series normais-MediaMovel.txt')
 
-    # Visualizar resultados para sensor 1
+    # Visualizar resultados-series normais para sensor 1
     plt.figure(figsize=(12, 6))
     plt.plot(sensor_data1, label='Sensor Data 1')
     plt.plot(range(window_size - 1, len(sensor_data1)), moving_means1, color='green', linestyle='--',

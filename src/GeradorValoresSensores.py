@@ -5,12 +5,12 @@ import random
 
 def gerar_dados_aleatoriamente(num_sensors, indices_erroneos, pasta_dadoscorretos, pasta_dadosincorretos):
     for i in range(1, num_sensors + 1):
-        normal_data = np.random.normal(loc=42, scale=0.5, size = 50)  # Dados normais, 8640
-       # normal_data = np.round(normal_data).astype(int)  # Arredondar
+        normal_data = np.random.normal(loc=42, scale=0.5, size = 8640)  # Dados normais, 8640
+        normal_data = np.round(normal_data).astype(int)
         nomesensor = "temperatura" + str(i)
-        normal_data = normal_data.astype(int)
 
-        # Caminho completo para salvar os dados
+
+        # Caminho completo para salvar os dados normais
         caminho_arquivo = os.path.join(pasta_dadoscorretos, f'{nomesensor}.csv')
 
         # Salvar os L1-10pt rotulados em um arquivo CSV
@@ -23,7 +23,7 @@ def gerar_dados_aleatoriamente(num_sensors, indices_erroneos, pasta_dadoscorreto
         indices_freezing = random.sample(range(meio, len(normal_data)), len(normal_data) - meio)
 
 
-        # Aplicar drift nos L1-10pt normais
+        # Aplicar drift nos dados e salvar dados incorretos
         drift(normal_data, indices_anomalos, nomesensor, pasta_dadosincorretos)
         bias(normal_data, indices_anomalos, nomesensor, pasta_dadosincorretos)
         freezing(normal_data, indices_freezing, nomesensor, pasta_dadosincorretos)
@@ -56,6 +56,7 @@ def gerar_dados_secionados(num_sensores, indices_erroneos, pasta_dadoscorretos, 
             # Adicionando os dados ao dia
             daily_data.extend(temps)
 
+
         # Para o intervalo entre 18:00h e 00:00h
         start_time, start_temp = times_of_day[-1]  # 18:00h, 24°C
         end_time, end_temp = (24, 22)  # 00:00h, 22°C
@@ -63,6 +64,8 @@ def gerar_dados_secionados(num_sensores, indices_erroneos, pasta_dadoscorretos, 
         times = np.linspace(start_time * 3600, end_time * 3600, time_steps)
         temps = np.linspace(start_temp, end_temp, time_steps)
         daily_data.extend(temps)
+
+        daily_data.extend(np.round(temps).astype(int))
 
         # Salvar os dados para o dia
         nomesensor = f"temperatura{j}"
@@ -78,9 +81,6 @@ def gerar_dados_secionados(num_sensores, indices_erroneos, pasta_dadoscorretos, 
         meio = len(daily_data) // 2
         indices_freezing = random.sample(range(meio, len(daily_data)), len(daily_data) - meio)
 
-
-
-        print(meio)
         # Aplicar drift nos L1-10pt normais
         drift(daily_data, indices_anomalos, nomesensor, pasta_dadosincorretos)
         bias(daily_data, indices_anomalos, nomesensor, pasta_dadosincorretos)
@@ -164,13 +164,13 @@ def noise(initial_values, indices_anomalos, nomesensor, pasta_dadosincorretos):
 def gerar_dados():
 # 864 10% dos dados incorretos   L1 - 100 sensores
 # 1728  20% dos dados incorretos   L2 - 100 sensores
-# Configurar a quantidade de indices e os nomes dos lotes manualmente
+# Configurar a quantidade de indices, os lotes e os tipos de sequências {sazonais e não-sazonais}
 
-    num_sensors = 3
-    indices_erroneos = 3000
+    num_sensors = 30
+    indices_erroneos = 1728
 
-    pasta_dadoscorretos = '/home/kathiani/midval/dados/sazonais/temperatura/corretos/L1'
-    pasta_dadosincorretos = '/home/kathiani/midval/dados/sazonais/temperatura/incorretos/L1'
+    pasta_dadoscorretos = '/home/kathiani/midval/dados/temperatura-sazonais/corretos/L2'
+    pasta_dadosincorretos = '/home/kathiani/midval/dados/temperatura-sazonais/incorretos/L2'
 
     if not os.path.exists(pasta_dadoscorretos):
         os.makedirs(pasta_dadoscorretos)

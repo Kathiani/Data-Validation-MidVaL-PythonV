@@ -6,11 +6,11 @@ import time
 import os
 
 def salvar_infos_em_arquivo(processing_time, fault, sensor_name, value, forecast, filename):
-    pasta_resultados = 'resultados'
+    pasta_resultados = 'resultados-series normais'
     if not os.path.exists(pasta_resultados):
         os.makedirs(pasta_resultados)
 
-    # Caminho completo para o arquivo dentro da pasta 'resultados'
+    # Caminho completo para o arquivo dentro da pasta 'resultados-series normais'
     caminho_arquivo = os.path.join(pasta_resultados, filename)
 
     with open(caminho_arquivo, 'a') as file:
@@ -58,9 +58,9 @@ def startisolationforest():
     else:
         error = "Falso"
 
-    salvar_infos_em_arquivo(processing_time, error, sensor_name, temperatures[0][0], iso_preds[0], 'resultados-UltimoDado.txt')
+    salvar_infos_em_arquivo(processing_time, error, sensor_name, temperatures[0][0], iso_preds[0], 'resultados-series normais-UltimoDado.txt')
 
-    # Visualizar os resultados
+    # Visualizar os resultados-series normais
     plt.figure(figsize=(12, 6))
     plt.title(f"Isolation Forest com parâmetros: {params}")
     scatter = plt.scatter(np.arange(len(temperatures)), temperatures, c=iso_preds, cmap='coolwarm', s=100, edgecolor='k')
@@ -77,7 +77,7 @@ def startisolationforest():
     plt.tight_layout()
     plt.show()
 
-    # Exibir os resultados
+    # Exibir os resultados-series normais
     print(f"Parâmetros: {params}")
     print("Isolation Forest Predictions:", iso_preds)
 

@@ -1,4 +1,0 @@
-Sensor,Grupo de Execução,Precision,Recall,F1-Measure,Tempo Processa Sensor
-1,diversidade-Drift-L1,0.9998227264669385,1.0,0.9999113553762964,0.004988431930541992
-2,diversidade-Drift-L1,1.0,1.0,1.0,0.00471043586730957
-3,diversidade-Drift-L1,0.9998227264669385,1.0,0.9999113553762964,0.004785060882568359

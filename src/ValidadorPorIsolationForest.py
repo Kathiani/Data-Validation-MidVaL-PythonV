@@ -81,7 +81,7 @@ def startisolationforest(n_sensores, tecnica, pasta_incorretos, pasta_resultados
                 end_time = time.time()
                 tempoprocessamento_atual = end_time - start_time
 
-                # Caminho para salvar os resultados do algoritmo para as leituras
+                # Caminho para salvar os resultados-series normais do algoritmo para as leituras
                 caminho_nome_arquivo = f'{caminho_resultados}/{grupo_execucao}-{tipo_sensor}-{i}.csv'
 
                 salvar_predicoes_avaliacoes(sensor_data, iso_preds, caminho_nome_arquivo)

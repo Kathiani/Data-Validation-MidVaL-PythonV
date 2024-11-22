@@ -1,4 +1,0 @@
-Sensor,Grupo de Execução,Precision,Recall,F1-Measure,Tempo Processa Sensor
-1,diversidade-Freezing-L2,0.8,1.0,0.888888888888889,0.0037603378295898438
-2,diversidade-Freezing-L2,0.8,1.0,0.888888888888889,0.0037534236907958984
-3,diversidade-Freezing-L2,0.8,1.0,0.888888888888889,0.003855466842651367
