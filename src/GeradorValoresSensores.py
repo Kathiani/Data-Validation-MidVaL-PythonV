@@ -65,7 +65,6 @@ def gerar_dados_secionados(num_sensores, indices_erroneos, pasta_dadoscorretos, 
         temps = np.linspace(start_temp, end_temp, time_steps)
         daily_data.extend(temps)
 
-        daily_data.extend(np.round(temps).astype(int))
 
         # Salvar os dados para o dia
         nomesensor = f"temperatura{j}"
@@ -107,16 +106,16 @@ def criarrotulos(data, indices_anomalos, nomesensor, nometecnica, pasta_dadosinc
 
 # Função para aplicar drift em pontos esporádicos
 def drift(initial_values, indices_anomalos, nomesensor, pasta_dadosincorretos):
-    noise_stddev = 10  # Desvio padrão do ruído
-    results = initial_values.copy()
+    indices_anomalos.sort()
+    incremento_drift = 2
+    vini_drift = 1
 
-    # Aplicar drift apenas nos índices escolhidos
-    for i in indices_anomalos:
-        noise = np.random.normal(0, noise_stddev)  # Gerar ruído
-        y = results[i] + i * noise
-        results[i] = y # Aplicar o drift nos pontos aleatórios
+    # Aplicar drift linear nos índices anômalos
+    for i, idx in enumerate(indices_anomalos):
+        initial_values[idx] =  initial_values[idx] + vini_drift
+        vini_drift = vini_drift + incremento_drift
 
-    criarrotulos(results, indices_anomalos, nomesensor, 'Drift', pasta_dadosincorretos)
+    criarrotulos(initial_values, indices_anomalos, nomesensor, 'Drift', pasta_dadosincorretos)
 
 
 def bias(initial_values, indices_anomalos, nomesensor, pasta_dadosincorretos):
@@ -124,7 +123,7 @@ def bias(initial_values, indices_anomalos, nomesensor, pasta_dadosincorretos):
     results = initial_values.copy()
 
     for i in indices_anomalos:
-        results[i] = results[i] + intensidade # Aplicar a fórmula
+        results[i] = results[i] + intensidade  # Aplicar a fórmula
 
     criarrotulos(results, indices_anomalos, nomesensor, 'Bias', pasta_dadosincorretos)
 
@@ -166,11 +165,11 @@ def gerar_dados():
 # 1728  20% dos dados incorretos   L2 - 100 sensores
 # Configurar a quantidade de indices, os lotes e os tipos de sequências {sazonais e não-sazonais}
 
-    num_sensors = 30
+    num_sensors = 3
     indices_erroneos = 1728
 
-    pasta_dadoscorretos = '/home/kathiani/midval/dados/temperatura-sazonais/corretos/L2'
-    pasta_dadosincorretos = '/home/kathiani/midval/dados/temperatura-sazonais/incorretos/L2'
+    pasta_dadoscorretos = '/home/kathiani/midval/dados/temperatura-corrigidos/corretos/L2'
+    pasta_dadosincorretos = '/home/kathiani/midval/dados/temperatura-corrigidos/incorretos/L2'
 
     if not os.path.exists(pasta_dadoscorretos):
         os.makedirs(pasta_dadoscorretos)
@@ -178,8 +177,8 @@ def gerar_dados():
     if not os.path.exists(pasta_dadosincorretos):
         os.makedirs(pasta_dadosincorretos)
 
-    gerar_dados_secionados(num_sensors, indices_erroneos, pasta_dadoscorretos, pasta_dadosincorretos)
-    #gerar_dados_aleatoriamente(num_sensors, indices_erroneos, pasta_dadoscorretos, pasta_dadosincorretos)
+    #gerar_dados_secionados(num_sensors, indices_erroneos, pasta_dadoscorretos, pasta_dadosincorretos)
+    gerar_dados_aleatoriamente(num_sensors, indices_erroneos, pasta_dadoscorretos, pasta_dadosincorretos)
 
 
 gerar_dados()

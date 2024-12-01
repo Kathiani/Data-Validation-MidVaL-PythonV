@@ -1,0 +1,2 @@
+Sensor,Grupo de Execução,Precision,Recall,F1-Measure,Tempo Processa Sensor
+1,svm-Drift-L1,0.9981744686399792,0.9844393004115226,0.9912593072191648,0.35559630393981934

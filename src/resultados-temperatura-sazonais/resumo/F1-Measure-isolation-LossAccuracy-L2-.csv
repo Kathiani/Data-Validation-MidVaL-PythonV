@@ -1,0 +1,2 @@
+Sensor,Grupo de Execução,Precision,Recall,F1-Measure,Tempo Processa Sensor
+1,isolation-LossAccuracy-L2,0.8037022753567297,0.9045138888888888,0.8511333469471104,0.08899474143981934

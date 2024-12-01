@@ -40,7 +40,7 @@ def startisolationforest(n_sensores, tecnica, pasta_incorretos, pasta_resultados
 
 
     tipo_erro = ['LossAccuracy', 'Drift', 'Noise', 'Bias', 'Freezing']
-    lotes = ['L1', 'L2']
+    lotes = ['L1','L2']
 
 
     for nlote in lotes:

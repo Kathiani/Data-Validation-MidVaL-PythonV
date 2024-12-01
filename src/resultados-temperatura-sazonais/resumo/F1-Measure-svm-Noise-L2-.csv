@@ -1,0 +1,2 @@
+Sensor,Grupo de Execução,Precision,Recall,F1-Measure,Tempo Processa Sensor
+1,svm-Noise-L2,0.8884012539184953,0.8200231481481481,0.8528438158290702,0.5468776226043701

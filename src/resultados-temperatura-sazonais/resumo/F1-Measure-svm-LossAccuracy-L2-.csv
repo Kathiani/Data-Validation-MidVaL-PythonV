@@ -1,0 +1,2 @@
+Sensor,Grupo de Execução,Precision,Recall,F1-Measure,Tempo Processa Sensor
+1,svm-LossAccuracy-L2,0.804917623564653,0.9330150462962963,0.8642455105869741,0.3439803123474121

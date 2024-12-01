@@ -1,0 +1,2 @@
+Sensor,Grupo de Execução,Precision,Recall,F1-Measure,Tempo Processa Sensor
+1,isolation-Drift-L2,0.8888888888888888,1.0,0.9411764705882353,0.08346438407897949

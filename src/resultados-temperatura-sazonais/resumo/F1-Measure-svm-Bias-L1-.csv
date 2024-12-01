@@ -1,0 +1,2 @@
+Sensor,Grupo de Execução,Precision,Recall,F1-Measure,Tempo Processa Sensor
+1,svm-Bias-L1,0.9066237942122186,0.9065072016460906,0.9065654941804385,0.3618474006652832

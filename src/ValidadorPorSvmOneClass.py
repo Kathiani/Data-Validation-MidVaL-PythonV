@@ -42,7 +42,7 @@ def startsvms(n_sensores, tecnica,  pasta_dadosincorretos, pasta_resultados, pas
 
     tiposensor = 'temperatura'
     tipo_erro = ['LossAccuracy', 'Drift', 'Noise', 'Bias', 'Freezing']
-    lotes = ['L1', 'L2']
+    lotes = ['L1','L2']
 
     for nlote in lotes:
         for n in tipo_erro:

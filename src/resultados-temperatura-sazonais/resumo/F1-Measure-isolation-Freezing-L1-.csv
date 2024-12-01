@@ -1,0 +1,2 @@
+Sensor,Grupo de Execução,Precision,Recall,F1-Measure,Tempo Processa Sensor
+1,isolation-Freezing-L1,0.4445872975057856,0.8004629629629629,0.5716647379732187,0.0739448070526123
