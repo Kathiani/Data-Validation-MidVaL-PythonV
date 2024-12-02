@@ -11,10 +11,10 @@ import os
 
 if __name__ == "__main__":
 
-    pasta_dadoscorretos = '/home/kathiani/midval/dados/temperatura-sazonais/corretos'
-    pasta_dadosincorretos = '/home/kathiani/midval/dados/temperatura-sazonais/incorretos'
+    pasta_dadoscorretos = '/home/kathiani/midval/dados/temperatura/corretos'
+    pasta_dadosincorretos = '/home/kathiani/midval/dados/temperatura/incorretos'
     pasta_resultados = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados-temperatura-sazonais'
-    pasta_resumo = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados-temperatura-sazonais/resumo/'
+    pasta_resumo = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados-temperatura-sazonais/resumo'
     if not os.path.exists(pasta_resultados):
         os.makedirs(pasta_resultados)
 

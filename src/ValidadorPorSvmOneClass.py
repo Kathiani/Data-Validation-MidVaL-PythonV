@@ -13,15 +13,15 @@ def salvar_predicoes_avaliacoes(sensor_data, svm_preds, caminho_arquivo):
     labels = sensor_data.iloc[:, 1].values
     comparacao = []
 
-    for true, pred in zip(labels, svm_preds):
-        if true == 'correto' and pred == 1:
-            comparacao.append('VP')
-        elif true == 'incorreto' and pred == 1:
+    for true, pred in zip(labels, svm_preds): #Ponto de vista de detecção de erros
+        if true == 'correto' and pred == -1:
             comparacao.append('FN')
-        elif true == 'correto' and pred == -1:
+        elif true == 'incorreto' and pred == 1:
             comparacao.append('FP')
-        elif true == 'incorreto' and pred == -1:
+        elif true == 'correto' and pred == 1:
             comparacao.append('VN')
+        elif true == 'incorreto' and pred == -1:
+            comparacao.append('VP')
         else:
             comparacao.append('Análise incorreta!')
 

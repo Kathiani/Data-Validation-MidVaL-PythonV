@@ -171,6 +171,50 @@ def plotar_freezing():
     # Exibir o gráfico
     plt.show()
 
+def plotardeteccoes():
+    file_path = '/home/kathiani/midval/dados/plots/'
+    caminho_entrada = '/home/kathiani/midval/dados/plots/L1svm-Noise-L1-temperatura-4.csv'
+
+    # Carregar o CSV e garantir nomes de colunas limpos
+    data = pd.read_csv(caminho_entrada)
+    data.columns = data.columns.str.strip()  # Remove espaços extras nos nomes das colunas
+
+    # Filtrar os 20 primeiros pontos
+    data_firstpoints = data.head(300)
+
+    # Obter índices e valores dos 20 primeiros
+    x = data_firstpoints.index
+    y = data_firstpoints['Dado']
+
+    # Identificar os pontos com Label "incorreto" nos 20 primeiros
+    incorrect_points = data_firstpoints[data_firstpoints['Avaliação'].str.strip() == 'VN']
+
+    # Plotar a curva dos 200 primeiros
+    plt.figure(figsize=(20, 10), facecolor='gray')  # Garante fundo branco
+    plt.plot(x, y, label='VN', color='blue', marker='o', linestyle='-', alpha=0.6)
+
+    # Adicionar os valores dos dados em cada ponto
+    for i in range(len(data_firstpoints)):
+        plt.text(x[i], y.iloc[i], str(y.iloc[i]), fontsize=10, ha='center', va='bottom')
+
+    # Destacar os pontos "incorretos" entre os 20 primeiros
+    plt.scatter(incorrect_points.index, incorrect_points['Dado'], color='purple', label='Verdadeiro Negativos',
+                zorder=5)
+
+    # Configurar o gráfico
+    # plt.title('Curva dos 20 Primeiros Dados com Destaque e Valores')
+    plt.xlabel('60 Leituras - Sensor Temperatura')
+    plt.ylabel('Valor do Dado')
+    plt.legend()
+    plt.grid(True)
+
+    # Mostrar o gráfico
+    plt.show()
+    plt.savefig('/home/kathiani/midval/dados/plots/grafico_vn.png',
+                dpi=300)  # Salva o gráfico como PNG com alta qualidade (300 dpi)
+
+
 #plotardados_e_erros()
 #comparar_sequencias_plotar_erros()
-plotar_freezing()
+#plotar_freezing()
+plotardeteccoes()

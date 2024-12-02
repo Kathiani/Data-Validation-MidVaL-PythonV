@@ -1,4 +1,4 @@
-
+import matplotlib.pyplot as plt
 import pandas as pd
 import time, os
 from sklearn.ensemble import IsolationForest
@@ -11,15 +11,15 @@ def salvar_predicoes_avaliacoes(sensor_data, forecasts, caminho_arquivo):
     labels = sensor_data.iloc[:, 1].values
     comparacao = []
 
-    for true, pred in zip(labels, forecasts):
-        if true == 'correto' and pred == 1:
-            comparacao.append('VP')
-        elif true == 'incorreto' and pred == 1:
+    for true, pred in zip(labels, forecasts): #Ponto de vista de detecção de erros
+        if true == 'correto' and pred == -1:
             comparacao.append('FN')
-        elif true == 'correto' and pred == -1:
+        elif true == 'incorreto' and pred == 1:
             comparacao.append('FP')
-        elif true == 'incorreto' and pred == -1:
+        elif true == 'correto' and pred == 1:
             comparacao.append('VN')
+        elif true == 'incorreto' and pred == -1:
+            comparacao.append('VP')
         else:
             comparacao.append('Análise incorreta!')
 
@@ -37,8 +37,6 @@ def salvar_predicoes_avaliacoes(sensor_data, forecasts, caminho_arquivo):
 
 
 def startisolationforest(n_sensores, tecnica, pasta_incorretos, pasta_resultados, pasta_resumo, tipo_sensor):
-
-
     tipo_erro = ['LossAccuracy', 'Drift', 'Noise', 'Bias', 'Freezing']
     lotes = ['L1','L2']
 
@@ -77,14 +75,12 @@ def startisolationforest(n_sensores, tecnica, pasta_incorretos, pasta_resultados
                 iso_forest.fit(data)
                 iso_preds = iso_forest.predict(data)
 
-
                 end_time = time.time()
                 tempoprocessamento_atual = end_time - start_time
 
                 # Caminho para salvar os resultados-series normais do algoritmo para as leituras
                 caminho_nome_arquivo = f'{caminho_resultados}/{grupo_execucao}-{tipo_sensor}-{i}.csv'
 
-                salvar_predicoes_avaliacoes(sensor_data, iso_preds, caminho_nome_arquivo)
                 salvar_predicoes_avaliacoes(sensor_data, iso_preds, caminho_nome_arquivo)  # Computa e armazena predições para as leituras do sensor atual
                 computa_Fmeasure(caminho_nome_arquivo, pasta_resumo, grupo_execucao, i, tempoprocessamento_atual)                                  # Comp
 

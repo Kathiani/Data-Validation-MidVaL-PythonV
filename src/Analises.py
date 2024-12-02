@@ -52,8 +52,8 @@ def teste_shapiro():
 def testTStudent(): #se os dados servem como distribuição normal
 
     # Especifique o caminho do arquivo para cada grupo
-    arquivo_grupo1 = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados-series normais/resumo/F1-Measure-isolation-Noise-L1-.csv'
-    arquivo_grupo2 = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados-series normais/resumo/F1-Measure-diversidade-Noise-L1-.csv'
+    arquivo_grupo1 = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados-temperatura/resumo/F1-Measure-isolation-Freezing-L1-.csv'
+    arquivo_grupo2 = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados-temperatura/resumo/F1-Measure-svm-Freezing-L1-.csv'
     # Especifique o caminho do arquivo de saída para gravar os resultados-series normais
 
     pasta_saida = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados-series normais/resumo/'
@@ -103,11 +103,11 @@ def testTStudent(): #se os dados servem como distribuição normal
 def testMannWhitney():
 
     # Especifique o caminho do arquivo para cada grupo
-    arquivo_grupo1 = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados-series normais/resumo/F1-Measure-svm-LossAccuracy-L2-.csv'
-    arquivo_grupo2 = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados-series normais/resumo/F1-Measure-diversidade-LossAccuracy-L2-.csv'
+    arquivo_grupo1 = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados-temperatura/resumo/F1-Measure-isolation-Noise-L1-.csv'
+    arquivo_grupo2 = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados-temperatura/resumo/F1-Measure-diversidade-Noise-L1-.csv'
     # Especifique o caminho do arquivo de saída para gravar os resultados-series normais
 
-    pasta_saida = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados-series normais/resumo/'
+    pasta_saida = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados-temperatura/resumo/'
     arquivo_saida = os.path.join(pasta_saida, 'Resultados_mann_whitney_TempoProcessamento.csv')
 
 
