@@ -1,0 +1,14 @@
+Arquivo,Média F1-Measure,Média Accuracy,Média Tempo Processamento
+F1-Measure-isolation-Bias-L1-.csv,0.6156359089334464,0.9373500192901235,0.07607913812001543
+F1-Measure-isolation-Bias-L2-.csv,0.41961581553421007,0.8145505401234568,0.07974402705828346
+F1-Measure-isolation-Noise-L1-.csv,0.8359895163333253,0.9576065779320988,0.08189057310422258
+F1-Measure-isolation-Noise-L2-.csv,0.7433271845601261,0.919212962962963,0.08809927503267921
+
+ # Definir os parâmetros para o modelo Isolation Forest
+                params = {
+                    'n_estimators': 100,
+                    'max_samples': 'auto',
+                    'contamination': 0.1,
+                    'max_features': 0.5,
+                    'random_state': 42
+                }

@@ -1,0 +1,17 @@
+Número do Sensor: 25
+Resultados da Execução: diversidade-Noise-L1
+==================================================
+Matriz de Confusão:
+[[7770    6]
+ [ 176  688]]
+
+Verdadeiros Positivos (VP): 688
+Verdadeiros Negativos (VN): 7770
+Falsos Positivos (FP): 6
+Falsos Negativos (FN): 176
+
+Precision: 0.9914
+Recall: 0.7963
+F1-Score: 0.8832
+Acurácia: 0.9789
+==================================================

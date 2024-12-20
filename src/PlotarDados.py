@@ -116,8 +116,8 @@ def plotar_erros_comparados(caminho_corretos, caminho_incorretos):
 
 # Chamar a função
 def comparar_sequencias_plotar_erros():
-    caminho_corretos = '/home/kathiani/midval/dados/temperatura-corrigidos/corretos/L2/temperatura1.csv'
-    caminho_incorretos = '/home/kathiani/midval/dados/temperatura-corrigidos/incorretos/L2/Drift-temperatura1.csv'
+    caminho_corretos = '/home/kathiani/midval/dados/temperatura/corretos/L2/temperatura1.csv'
+    caminho_incorretos = '/home/kathiani/midval/dados/temperatura/incorretos/L2/Drift-temperatura1.csv'
     plotar_erros_comparados(caminho_corretos, caminho_incorretos)
 
 
@@ -172,46 +172,67 @@ def plotar_freezing():
     plt.show()
 
 def plotardeteccoes():
-    file_path = '/home/kathiani/midval/dados/plots/'
-    caminho_entrada = '/home/kathiani/midval/dados/plots/L1svm-Noise-L1-temperatura-4.csv'
+    import pandas as pd
+    import matplotlib.pyplot as plt
 
+    # Caminho do arquivo CSV
+    caminho_entrada = '/home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/svm/Noise/L1/L1svm-Noise-L1-temperatura-13.csv'
     # Carregar o CSV e garantir nomes de colunas limpos
     data = pd.read_csv(caminho_entrada)
     data.columns = data.columns.str.strip()  # Remove espaços extras nos nomes das colunas
 
-    # Filtrar os 20 primeiros pontos
-    data_firstpoints = data.head(300)
+    # Filtrar os 50 primeiros pontos
+    data_firstpoints = data.head(50)
 
-    # Obter índices e valores dos 20 primeiros
+    # Obter índices e valores dos 50 primeiros
     x = data_firstpoints.index
     y = data_firstpoints['Dado']
 
-    # Identificar os pontos com Label "incorreto" nos 20 primeiros
-    incorrect_points = data_firstpoints[data_firstpoints['Avaliação'].str.strip() == 'VN']
+    # Identificar os pontos com Avaliação "VN" (Verdadeiros Negativos)
+    vn_points = data_firstpoints[data_firstpoints['Avaliação'].str.strip() == 'VN']
 
-    # Plotar a curva dos 200 primeiros
-    plt.figure(figsize=(20, 10), facecolor='gray')  # Garante fundo branco
-    plt.plot(x, y, label='VN', color='blue', marker='o', linestyle='-', alpha=0.6)
+    # Identificar os pontos com Avaliação "VP" (Verdadeiros Positivos)
+    vp_points = data_firstpoints[data_firstpoints['Avaliação'].str.strip() == 'VP']
+
+    # Identificar os pontos com Avaliação "VP" (Verdadeiros Positivos)
+    #fp_points = data_firstpoints[data_firstpoints['Avaliação'].str.strip() == 'FP']
+
+    fn_points = data_firstpoints[data_firstpoints['Avaliação'].str.strip() == 'FN']
+
+    # Criar o gráfico
+    plt.figure(figsize=(20, 10), facecolor='white')  # Fundo branco para o gráfico
+
+    # Plotar a curva completa dos 50 primeiros
+    plt.plot(x, y, label='Curva de Dados', color='black', marker='o', linestyle='-', alpha=0.6)
+
+    # Destacar os pontos "Verdadeiros Negativos (VN)"
+    plt.scatter(vn_points.index, vn_points['Dado'], color='blue', label='Verdadeiros Negativos (VN)', zorder=5)
+
+    # Destacar os pontos "Verdadeiros Positivos (VP)"
+    plt.scatter(vp_points.index, vp_points['Dado'], color='red', label='Verdadeiros Positivos (VP)', zorder=5)
+
+    # Destacar os pontos "Verdadeiros Positivos (VP)"
+    #plt.scatter(vp_points.index, fp_points['Dado'], color='green', label='Falso Positivos (FP)', zorder=5)
+
+    # Destacar os pontos "Verdadeiros Positivos (VP)"
+    #plt.scatter(vp_points.index, fn_points['Dado'], color='orange', label='Falso Negativo (FN)', zorder=5)
 
     # Adicionar os valores dos dados em cada ponto
     for i in range(len(data_firstpoints)):
         plt.text(x[i], y.iloc[i], str(y.iloc[i]), fontsize=10, ha='center', va='bottom')
 
-    # Destacar os pontos "incorretos" entre os 20 primeiros
-    plt.scatter(incorrect_points.index, incorrect_points['Dado'], color='purple', label='Verdadeiro Negativos',
-                zorder=5)
-
     # Configurar o gráfico
-    # plt.title('Curva dos 20 Primeiros Dados com Destaque e Valores')
-    plt.xlabel('60 Leituras - Sensor Temperatura')
-    plt.ylabel('Valor do Dado')
-    plt.legend()
+    plt.title('Curva dos 50 Primeiros Dados com Destaque para VN e VP', fontsize=16)
+    plt.xlabel('Índice dos Dados', fontsize=12)
+    plt.ylabel('Valor do Dado', fontsize=12)
+    plt.legend(fontsize=12)
     plt.grid(True)
+
+    # Salvar o gráfico como PNG
+    plt.savefig('/home/kathiani/midval/dados/plots/deteccoes/svm-Noise-L1-temperatura-13.png', dpi=300)
 
     # Mostrar o gráfico
     plt.show()
-    plt.savefig('/home/kathiani/midval/dados/plots/grafico_vn.png',
-                dpi=300)  # Salva o gráfico como PNG com alta qualidade (300 dpi)
 
 
 #plotardados_e_erros()

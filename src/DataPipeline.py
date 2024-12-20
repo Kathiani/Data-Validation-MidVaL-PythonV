@@ -1,5 +1,7 @@
 
 from src.ValidadorPorIsolationForest import startisolationforest
+from src.ValidadorPorIsolationForest import startisolationforest2
+from src.ValidadorPorSvmOneClass import startsvms2
 from src.ValidadorPorSvmOneClass import startsvms
 from src.ValidadorPorCorrelacao import startcalculocorrelacaot
 from src.CalculadoraDeMetricas import computa_media_geral_metricas
@@ -11,10 +13,10 @@ import os
 
 if __name__ == "__main__":
 
-    pasta_dadoscorretos = '/home/kathiani/midval/dados/temperatura-corrigidos-teste/corretos'
-    pasta_dadosincorretos = '/home/kathiani/midval/dados/temperatura-corrigidos-teste/incorretos'
-    pasta_resultados = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados-temperatura-corrigidos-teste'
-    pasta_resumo = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados-temperatura-corrigidos-teste/resumo'
+    pasta_dadoscorretos = '/home/kathiani/midval/dados/temperatura/corretos'
+    pasta_dadosincorretos = '/home/kathiani/midval/dados/temperatura/incorretos'
+    pasta_resultados = '/home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes'
+    pasta_resumo = '/home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/resumo'
     if not os.path.exists(pasta_resultados):
         os.makedirs(pasta_resultados)
 
@@ -22,7 +24,7 @@ if __name__ == "__main__":
         os.makedirs(pasta_resumo)
 
     tipo_sensor = 'temperatura'
-    n_sensores = 3
+    n_sensores = 30
 
 
     startisolationforest(n_sensores,'isolation', pasta_dadosincorretos, pasta_resultados, pasta_resumo, tipo_sensor) #fixos os números dos lotes

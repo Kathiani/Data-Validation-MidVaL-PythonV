@@ -18,7 +18,7 @@ def salvar_predicoes_avaliacoes(sensor_data, outliers, caminho_arquivo):
     labels = sensor_data.iloc[:, 1].values
     comparacao = []
 
-    for true, pred in zip(labels, outliers): #Ponto de vista de detecção de erros
+    for true, pred in zip(labels, outliers):  # Ponto de vista de detecção de erros
         if true == 'correto' and pred == -1:
             comparacao.append('FN')
         elif true == 'incorreto' and pred == 1:
@@ -30,7 +30,7 @@ def salvar_predicoes_avaliacoes(sensor_data, outliers, caminho_arquivo):
         else:
             comparacao.append('Análise incorreta!')
 
-        # Criar DataFrame para salvar os valores e previsões
+    # Criar DataFrame para salvar os valores e previsões
     df = pd.DataFrame({
         'Dado': sensor_data.iloc[:, 0].values,
         'Label': sensor_data.iloc[:, 1].values,
@@ -43,7 +43,8 @@ def salvar_predicoes_avaliacoes(sensor_data, outliers, caminho_arquivo):
     #print(f"resultados-series normais salvos em {caminho_arquivo}")
 
 def startcalculocorrelacaot(n_sensores, tecnica, pasta_dadoscorretos, pasta_dadosincorretos, pasta_resultados, pasta_resumo, tipo_sensor):
-    tipo_erro = ['LossAccuracy', 'Drift', 'Noise', 'Bias', 'Freezing']
+    tipo_erro = ['LossAccuracy', 'Noise', 'Bias', 'Freezing']
+    #tipo_erro = ['Noise', 'Bias']
     lotes = ['L1', 'L2']
     limiar = 3
 
@@ -69,30 +70,40 @@ def startcalculocorrelacaot(n_sensores, tecnica, pasta_dadoscorretos, pasta_dado
                         start_time = time.time()
 
                         # Calcular a correlação entre o sensor i e os demais sensores
+
                         for j in range(1, n_sensores + 1):
                             if i!=j:
-                                proximo_sensor = pd.read_csv(f'{pasta_dadoscorretos}/{nlote}/{tipo_sensor}{i}.csv')
-                                data_proximo_sensor =  proximo_sensor.iloc[:, 0].values
-                                correlation = calculate_correlation(data, data_proximo_sensor)
+                                next_sensor = pd.read_csv(f'{pasta_dadoscorretos}/{nlote}/{tipo_sensor}{i}.csv')
+                                data_next_sensor =  next_sensor.iloc[:, 0].values
+                                correlation = calculate_correlation(data, data_next_sensor)
                                 correlations.append((j, correlation))
-                            #else:
-                                #correlations.append((j, 0))
-
 
                         correlations.sort(key=lambda x: x[1], reverse=True)
 
                         best_sensor_id = correlations[0][0]
-                        best_sensor_data = pd.read_csv(f'{pasta_dadoscorretos}/{nlote}/{tipo_sensor}{best_sensor_id}.csv')
+                        best_sensor_data = pd.read_csv(f'{pasta_dadoscorretos}/{nlote}/{tipo_sensor}{best_sensor_id}.csv') #Carregando dados do sensor de índice com maior correlação
                         best_sensor_data = best_sensor_data.iloc[:, 0].values
+
+
+
+
+
+                        #print(f"Melhor Id:{correlations[0][0]}")  # Carrega o índice do sensor com maior correlação
+                        #print(data)
+                        #print(best_sensor_data)
 
                         outliers = [None] * (len(data))
 
                         for k in range(0, len(data)):
-                            value_sensor = data[k]  # verificando se esta dentro dos limiares
-                            if abs(value_sensor - best_sensor_data[k]) >= limiar:
+                            value_sensor = data[k]
+                            if abs(value_sensor - best_sensor_data[k]) >= limiar: # verificação de limiar
                                   outliers[k] = -1
                             else:
                                   outliers[k] = 1
+
+
+
+                        #print(outliers)
 
                         end_time = time.time()
                         tempoprocessamento_atual = end_time - start_time

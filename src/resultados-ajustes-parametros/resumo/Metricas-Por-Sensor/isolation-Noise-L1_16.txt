@@ -1,0 +1,17 @@
+Número do Sensor: 16
+Resultados da Execução: isolation-Noise-L1
+==================================================
+Matriz de Confusão:
+[[7164  612]
+ [  61  803]]
+
+Verdadeiros Positivos (VP): 803
+Verdadeiros Negativos (VN): 7164
+Falsos Positivos (FP): 612
+Falsos Negativos (FN): 61
+
+Precision: 0.5675
+Recall: 0.9294
+F1-Score: 0.7047
+Acurácia: 0.9221
+==================================================

@@ -1,0 +1,17 @@
+Número do Sensor: 15
+Resultados da Execução: isolation-Noise-L1
+==================================================
+Matriz de Confusão:
+[[7195  581]
+ [  60  804]]
+
+Verdadeiros Positivos (VP): 804
+Verdadeiros Negativos (VN): 7195
+Falsos Positivos (FP): 581
+Falsos Negativos (FN): 60
+
+Precision: 0.5805
+Recall: 0.9306
+F1-Score: 0.7150
+Acurácia: 0.9258
+==================================================

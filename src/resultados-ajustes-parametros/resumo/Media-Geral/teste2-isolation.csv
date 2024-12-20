@@ -1,0 +1,15 @@
+Arquivo,Média F1-Measure,Média Accuracy,Média Tempo Processamento
+F1-Measure-isolation-Bias-L1-.csv,0.7853435961818435,0.9270968364197533,0.07923858165740964
+F1-Measure-isolation-Bias-L2-.csv,0.32444480576014445,0.7368634259259259,0.079945695400238
+F1-Measure-isolation-Noise-L1-.csv,0.6629025958850733,0.9019560185185187,0.08499666055043532
+F1-Measure-isolation-Noise-L2-.csv,0.8784417557955313,0.9478858024691359,0.09315182765324906
+
+
+  params = {
+                    'n_estimators': 100,
+                    'max_samples': 'auto',
+                    'contamination': 0.3,
+                    'max_features': 1,
+                    'random_state': 42
+                }
+

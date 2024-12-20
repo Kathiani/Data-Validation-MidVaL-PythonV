@@ -1,0 +1,17 @@
+Número do Sensor: 24
+Resultados da Execução: diversidade-LossAccuracy-L1
+==================================================
+Matriz de Confusão:
+[[7773    3]
+ [ 860    4]]
+
+Verdadeiros Positivos (VP): 4
+Verdadeiros Negativos (VN): 7773
+Falsos Positivos (FP): 3
+Falsos Negativos (FN): 860
+
+Precision: 0.5714
+Recall: 0.0046
+F1-Score: 0.0092
+Acurácia: 0.9001
+==================================================

@@ -1,0 +1,20 @@
+Arquivo Grupo 1, Arquivo Grupo 2, Resultado, p-valor
+/home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/resumo/F1-Measure-isolation-Bias-L1-.csv, /home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/resumo/F1-Measure-svm-Bias-L1-.csv, Distribuições Diferentes, 1.7807929095681583e-24
+Arquivo Grupo 1, Arquivo Grupo 2, Resultado, p-valor
+/home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/resumo/F1-Measure-isolation-Freezing-L1-.csv, /home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/resumo/F1-Measure-svm-Freezing-L1-.csv, Distribuições Iguais, nan
+Arquivo Grupo 1, Arquivo Grupo 2, Resultado, p-valor
+/home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/resumo/F1-Measure-isolation-Bias-L1-.csv, /home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/resumo/F1-Measure-diversidade-Bias-L1-.csv, Distribuições Diferentes, 5.530643719901697e-78
+Arquivo Grupo 1, Arquivo Grupo 2, Resultado, p-valor
+/home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/resumo/F1-Measure-isolation-Noise-L1-.csv, /home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/resumo/F1-Measure-diversidade-Noise-L1-.csv, Distribuições Diferentes, 3.540105941883115e-30
+Arquivo Grupo 1, Arquivo Grupo 2, Resultado, p-valor
+/home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/resumo/F1-Measure-isolation-Freezing-L2-.csv, /home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/resumo/F1-Measure-svm-Freezing-L2-.csv, Distribuições Iguais, nan
+Arquivo Grupo 1, Arquivo Grupo 2, Resultado, p-valor
+/home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/resumo/F1-Measure-isolation-Bias-L1-.csv, /home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/resumo/F1-Measure-diversidade-Bias-L1-.csv, Distribuições Diferentes, 5.530643719901697e-78
+Arquivo Grupo 1, Arquivo Grupo 2, Resultado, p-valor
+/home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/resumo/F1-Measure-isolation-Noise-L1-.csv, /home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/resumo/F1-Measure-diversidade-Noise-L1-.csv, Distribuições Diferentes, 3.540105941883115e-30
+Arquivo Grupo 1, Arquivo Grupo 2, Resultado, p-valor
+/home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/resumo/F1-Measure-isolation-Freezing-L2-.csv, /home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/resumo/F1-Measure-svm-Freezing-L2-.csv, Distribuições Iguais, nan
+Arquivo Grupo 1, Arquivo Grupo 2, Resultado, p-valor
+/home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/resumo/F1-Measure-isolation-Bias-L2-.csv, /home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/resumo/F1-Measure-diversidade-Bias-L2-.csv, Distribuições Diferentes, 3.9304615964111444e-82
+Arquivo Grupo 1, Arquivo Grupo 2, Resultado, p-valor
+/home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/resumo/F1-Measure-isolation-Noise-L2-.csv, /home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/resumo/F1-Measure-diversidade-Noise-L2-.csv, Distribuições Diferentes, 1.001942280168709e-73

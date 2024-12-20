@@ -1,0 +1,17 @@
+Número do Sensor: 28
+Resultados da Execução: isolation-Freezing-L1
+==================================================
+Matriz de Confusão:
+[[3656  664]
+ [4320    0]]
+
+Verdadeiros Positivos (VP): 0
+Verdadeiros Negativos (VN): 3656
+Falsos Positivos (FP): 664
+Falsos Negativos (FN): 4320
+
+Precision: 0.0000
+Recall: 0.0000
+F1-Score: 0.0000
+Acurácia: 0.4231
+==================================================

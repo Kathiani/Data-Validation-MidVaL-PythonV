@@ -1,0 +1,17 @@
+Número do Sensor: 3
+Resultados da Execução: svm-LossAccuracy-L1
+==================================================
+Matriz de Confusão:
+[[7771    5]
+ [ 834   30]]
+
+Verdadeiros Positivos (VP): 30
+Verdadeiros Negativos (VN): 7771
+Falsos Positivos (FP): 5
+Falsos Negativos (FN): 834
+
+Precision: 0.8571
+Recall: 0.0347
+F1-Score: 0.0667
+Acurácia: 0.9029
+==================================================

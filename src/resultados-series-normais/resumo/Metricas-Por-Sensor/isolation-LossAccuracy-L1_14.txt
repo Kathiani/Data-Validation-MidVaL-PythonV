@@ -1,0 +1,17 @@
+Número do Sensor: 14
+Resultados da Execução: isolation-LossAccuracy-L1
+==================================================
+Matriz de Confusão:
+[[7170  606]
+ [ 650  214]]
+
+Verdadeiros Positivos (VP): 214
+Verdadeiros Negativos (VN): 7170
+Falsos Positivos (FP): 606
+Falsos Negativos (FN): 650
+
+Precision: 0.2610
+Recall: 0.2477
+F1-Score: 0.2542
+Acurácia: 0.8546
+==================================================

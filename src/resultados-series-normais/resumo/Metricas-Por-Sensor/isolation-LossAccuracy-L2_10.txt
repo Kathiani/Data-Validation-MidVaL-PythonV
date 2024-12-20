@@ -1,0 +1,17 @@
+Número do Sensor: 10
+Resultados da Execução: isolation-LossAccuracy-L2
+==================================================
+Matriz de Confusão:
+[[6909    3]
+ [1669   59]]
+
+Verdadeiros Positivos (VP): 59
+Verdadeiros Negativos (VN): 6909
+Falsos Positivos (FP): 3
+Falsos Negativos (FN): 1669
+
+Precision: 0.9516
+Recall: 0.0341
+F1-Score: 0.0659
+Acurácia: 0.8065
+==================================================

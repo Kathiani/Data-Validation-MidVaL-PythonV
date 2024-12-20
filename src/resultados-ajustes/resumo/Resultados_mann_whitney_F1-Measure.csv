@@ -1,0 +1,22 @@
+Arquivo Grupo 1, Arquivo Grupo 2, Resultado, p-valor
+/home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/resumo/F1-Measure-isolation-LossAccuracy-L1-.csv, /home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/resumo/F1-Measure-svm-LossAccuracy-L1-.csv, Distribuições Diferentes, 0.004320638881059
+Arquivo Grupo 1, Arquivo Grupo 2, Resultado, p-valor
+/home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/resumo/F1-Measure-isolation-Noise-L1-.csv, /home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/resumo/F1-Measure-svm-Noise-L1-.csv, Distribuições Diferentes, 0.000000055094901
+Arquivo Grupo 1, Arquivo Grupo 2, Resultado, p-valor
+/home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/resumo/F1-Measure-svm-Freezing-L1-.csv, /home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/resumo/F1-Measure-diversidade-Freezing-L1-.csv, Distribuições Diferentes, 0.000065918180122
+Arquivo Grupo 1, Arquivo Grupo 2, Resultado, p-valor
+/home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/resumo/F1-Measure-svm-LossAccuracy-L1-.csv, /home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/resumo/F1-Measure-diversidade-LossAccuracy-L1-.csv, Distribuições Diferentes, 0.000001434205044
+Arquivo Grupo 1, Arquivo Grupo 2, Resultado, p-valor
+/home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/resumo/F1-Measure-isolation-Bias-L2-.csv, /home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/resumo/F1-Measure-svm-Bias-L2-.csv, Distribuições Diferentes, 0.000000010982304
+Arquivo Grupo 1, Arquivo Grupo 2, Resultado, p-valor
+/home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/resumo/F1-Measure-isolation-LossAccuracy-L2-.csv, /home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/resumo/F1-Measure-svm-LossAccuracy-L2-.csv, Distribuições Diferentes, 0.000003834942359
+Arquivo Grupo 1, Arquivo Grupo 2, Resultado, p-valor
+/home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/resumo/F1-Measure-isolation-Noise-L2-.csv, /home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/resumo/F1-Measure-svm-Noise-L2-.csv, Distribuições Diferentes, 0.000178133562050
+Arquivo Grupo 1, Arquivo Grupo 2, Resultado, p-valor
+/home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/resumo/F1-Measure-svm-Freezing-L2-.csv, /home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/resumo/F1-Measure-diversidade-Freezing-L2-.csv, Distribuições Diferentes, 0.000029179689431
+Arquivo Grupo 1, Arquivo Grupo 2, Resultado, p-valor
+/home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/resumo/F1-Measure-svm-LossAccuracy-L2-.csv, /home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/resumo/F1-Measure-diversidade-LossAccuracy-L2-.csv, Distribuições Diferentes, 0.000008877782891
+Arquivo Grupo 1, Arquivo Grupo 2, Resultado, p-valor
+/home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/resumo/F1-Measure-isolation-Freezing-L1-.csv, /home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/resumo/F1-Measure-diversidade-Freezing-L1-.csv, Distribuições Diferentes, 0.000065918180122
+Arquivo Grupo 1, Arquivo Grupo 2, Resultado, p-valor
+/home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/resumo/F1-Measure-isolation-Freezing-L2-.csv, /home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/resumo/F1-Measure-diversidade-Freezing-L2-.csv, Distribuições Diferentes, 0.000029179689431

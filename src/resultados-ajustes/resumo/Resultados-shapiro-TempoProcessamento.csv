@@ -1,2 +1,26 @@
 Arquivo, Resultado Shapiro-Wilk, p-valor
+F1-Measure-svm-LossAccuracy-L1-.csv, Distribuição Normal, 0.086377419531345
+F1-Measure-diversidade-LossAccuracy-L1-.csv, Distribuição  Não Normal, 0.001524092163891
+F1-Measure-diversidade-Noise-L2-.csv, Distribuição  Não Normal, 0.000003220336112
+F1-Measure-svm-Freezing-L1-.csv, Distribuição  Não Normal, 0.000000210225707
+F1-Measure-isolation-LossAccuracy-L2-.csv, Distribuição Normal, 0.055887993425131
+F1-Measure-svm-Freezing-L2-.csv, Distribuição Normal, 0.084807738661766
+F1-Measure-diversidade-Bias-L2-.csv, Distribuição  Não Normal, 0.000374155904865
+F1-Measure-svm-LossAccuracy-L2-.csv, Distribuição  Não Normal, 0.000018288166757
+F1-Measure-isolation-Bias-L1-.csv, Distribuição Normal, 0.102730862796307
+F1-Measure-isolation-Noise-L1-.csv, Distribuição  Não Normal, 0.000000484853274
+F1-Measure-diversidade-Freezing-L1-.csv, Distribuição  Não Normal, 0.000008380298823
+F1-Measure-isolation-Freezing-L2-.csv, Distribuição  Não Normal, 0.000000000353519
+F1-Measure-diversidade-Noise-L1-.csv, Distribuição  Não Normal, 0.001230058958754
+F1-Measure-isolation-Bias-L2-.csv, Distribuição  Não Normal, 0.000058887620980
+F1-Measure-diversidade-LossAccuracy-L2-.csv, Distribuição  Não Normal, 0.000000003533517
+F1-Measure-svm-Bias-L1-.csv, Distribuição  Não Normal, 0.009928409010172
+F1-Measure-diversidade-Bias-L1-.csv, Distribuição  Não Normal, 0.000000438303601
+F1-Measure-diversidade-Freezing-L2-.csv, Distribuição  Não Normal, 0.000000137464539
+F1-Measure-isolation-Freezing-L1-.csv, Distribuição  Não Normal, 0.000865640293341
+F1-Measure-svm-Noise-L2-.csv, Distribuição Normal, 0.807619988918304
+F1-Measure-isolation-Noise-L2-.csv, Distribuição  Não Normal, 0.004593373741955
 Resultados-shapiro-TempoProcessamento.csv, Erro ao processar o arquivo: No columns to parse from file, N/A
+F1-Measure-svm-Noise-L1-.csv, Distribuição  Não Normal, 0.000437075592345
+F1-Measure-isolation-LossAccuracy-L1-.csv, Distribuição  Não Normal, 0.000005971288829
+F1-Measure-svm-Bias-L2-.csv, Distribuição Normal, 0.056441586464643

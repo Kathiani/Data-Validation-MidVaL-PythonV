@@ -5,7 +5,7 @@ import random
 
 def gerar_dados_aleatoriamente(num_sensors, indices_erroneos, pasta_dadoscorretos, pasta_dadosincorretos):
     for i in range(1, num_sensors + 1):
-        normal_data = np.random.normal(loc=42, scale=0.5, size = 15)  # Dados normais, 8640
+        normal_data = np.random.normal(loc=42, scale=0.5, size = 8640)  # Dados normais, 8640
         normal_data = np.round(normal_data).astype(int)
         nomesensor = "temperatura" + str(i)
 
@@ -65,6 +65,7 @@ def gerar_dados_secionados(num_sensores, indices_erroneos, pasta_dadoscorretos, 
         temps = np.linspace(start_temp, end_temp, time_steps)
         daily_data.extend(temps)
 
+        daily_data.extend(np.round(temps).astype(int))
 
         # Salvar os dados para o dia
         nomesensor = f"temperatura{j}"
@@ -106,16 +107,16 @@ def criarrotulos(data, indices_anomalos, nomesensor, nometecnica, pasta_dadosinc
 
 # Função para aplicar drift em pontos esporádicos
 def drift(initial_values, indices_anomalos, nomesensor, pasta_dadosincorretos):
-    indices_anomalos.sort()
-    incremento_drift = 2
-    vini_drift = 1
+    noise_stddev = 10  # Desvio padrão do ruído
+    results = initial_values.copy()
 
-    # Aplicar drift linear nos índices anômalos
-    for i, idx in enumerate(indices_anomalos):
-        initial_values[idx] =  initial_values[idx] + vini_drift
-        vini_drift = vini_drift + incremento_drift
+    # Aplicar drift apenas nos índices escolhidos
+    for i in indices_anomalos:
+        noise = np.random.normal(0, noise_stddev)  # Gerar ruído
+        y = results[i] + i * noise
+        results[i] = y # Aplicar o drift nos pontos aleatórios
 
-    criarrotulos(initial_values, indices_anomalos, nomesensor, 'Drift', pasta_dadosincorretos)
+    criarrotulos(results, indices_anomalos, nomesensor, 'Drift', pasta_dadosincorretos)
 
 
 def bias(initial_values, indices_anomalos, nomesensor, pasta_dadosincorretos):
@@ -123,7 +124,7 @@ def bias(initial_values, indices_anomalos, nomesensor, pasta_dadosincorretos):
     results = initial_values.copy()
 
     for i in indices_anomalos:
-        results[i] = results[i] + intensidade  # Aplicar a fórmula
+        results[i] = results[i] + intensidade # Aplicar a fórmula
 
     criarrotulos(results, indices_anomalos, nomesensor, 'Bias', pasta_dadosincorretos)
 
@@ -165,11 +166,11 @@ def gerar_dados():
 # 1728  20% dos dados incorretos   L2 - 100 sensores
 # Configurar a quantidade de indices, os lotes e os tipos de sequências {sazonais e não-sazonais}
 
-    num_sensors = 3
-    indices_erroneos = 5
+    num_sensors = 30
+    indices_erroneos =  2592
 
-    pasta_dadoscorretos = '/home/kathiani/midval/dados/temperatura-corrigidos-teste/corretos/L1'
-    pasta_dadosincorretos = '/home/kathiani/midval/dados/temperatura-corrigidos-teste/incorretos/L1'
+    pasta_dadoscorretos = '/home/kathiani/midval/dados/temperatura-novos-dados/corretos/L3'
+    pasta_dadosincorretos = '/home/kathiani/midval/dados/temperatura-novos-dados/incorretos/L3'
 
     if not os.path.exists(pasta_dadoscorretos):
         os.makedirs(pasta_dadoscorretos)

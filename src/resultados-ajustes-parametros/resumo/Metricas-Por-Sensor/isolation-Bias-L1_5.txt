@@ -1,0 +1,17 @@
+Número do Sensor: 5
+Resultados da Execução: isolation-Bias-L1
+==================================================
+Matriz de Confusão:
+[[7762   14]
+ [   0  864]]
+
+Verdadeiros Positivos (VP): 864
+Verdadeiros Negativos (VN): 7762
+Falsos Positivos (FP): 14
+Falsos Negativos (FN): 0
+
+Precision: 0.9841
+Recall: 1.0000
+F1-Score: 0.9920
+Acurácia: 0.9984
+==================================================

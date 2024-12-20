@@ -1,0 +1,17 @@
+Número do Sensor: 30
+Resultados da Execução: svm-Bias-L1
+==================================================
+Matriz de Confusão:
+[[6589 1187]
+ [ 581  283]]
+
+Verdadeiros Positivos (VP): 283
+Verdadeiros Negativos (VN): 6589
+Falsos Positivos (FP): 1187
+Falsos Negativos (FN): 581
+
+Precision: 0.1925
+Recall: 0.3275
+F1-Score: 0.2425
+Acurácia: 0.7954
+==================================================

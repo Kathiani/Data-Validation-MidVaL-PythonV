@@ -54,7 +54,7 @@ def aplicar_ruido_demonstracao():
     # Parâmetros
     initial_values = [42, 42, 42, 43, 43, 43, 43, 44, 44, 44, 44, 45, 45 ,45 , 45]  # Valores iniciais de teste
     #drift(initial_values)
-    bias(initial_values)
+    #bias(initial_values)
     #freezing(initial_values)
     #loss_accuracy(initial_values)
     #noise(initial_values)

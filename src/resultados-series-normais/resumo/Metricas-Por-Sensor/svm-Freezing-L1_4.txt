@@ -1,0 +1,17 @@
+Número do Sensor: 4
+Resultados da Execução: svm-Freezing-L1
+==================================================
+Matriz de Confusão:
+[[4310   10]
+ [4320    0]]
+
+Verdadeiros Positivos (VP): 0
+Verdadeiros Negativos (VN): 4310
+Falsos Positivos (FP): 10
+Falsos Negativos (FN): 4320
+
+Precision: 0.0000
+Recall: 0.0000
+F1-Score: 0.0000
+Acurácia: 0.4988
+==================================================

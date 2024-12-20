@@ -6,13 +6,13 @@ import pandas as pd
 
 def teste_shapiro():
     # Diretório onde os arquivos CSV estão localizados
-    diretorio_csv = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados-series normais/resumo'
+    diretorio_csv = '/home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/resumo'
 
     # Diretório onde o arquivo de resultados-series normais será salvo
-    diretorio_resultado = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados-series normais/resumo'
+    diretorio_resultado = '/home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/resumo'
 
     # Caminho completo para o arquivo onde os resultados-series normais serão salvos
-    arquivo_resultado = os.path.join(diretorio_resultado, 'Resultados-shapiro-TempoProcessamento.csv')
+    arquivo_resultado = os.path.join(diretorio_resultado, 'Resultados-shapiro-F1-Measure.csv')
 
     if not os.path.exists(diretorio_resultado):
         os.makedirs(diretorio_resultado)
@@ -30,9 +30,9 @@ def teste_shapiro():
                     df = pd.read_csv(caminho_arquivo)
 
                     # Verifica se a coluna 'F1-Measure' está presente
-                    if 'Tempo Processa Sensor' in df.columns:
+                    if 'F1-Measure' in df.columns:
                         # Realiza o teste de Shapiro-Wilk
-                        estatistica, p_valor = shapiro(df['Tempo Processa Sensor'])
+                        estatistica, p_valor = shapiro(df['F1-Measure'])
 
                         # Define o nível de significância (ex: 0.05)
                         alpha = 0.05
@@ -52,11 +52,11 @@ def teste_shapiro():
 def testTStudent(): #se os dados servem como distribuição normal
 
     # Especifique o caminho do arquivo para cada grupo
-    arquivo_grupo1 = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados-temperatura/resumo/F1-Measure-isolation-Freezing-L1-.csv'
-    arquivo_grupo2 = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados-temperatura/resumo/F1-Measure-svm-Freezing-L1-.csv'
+    arquivo_grupo1 = '/home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/resumo/F1-Measure-isolation-Noise-L2-.csv'
+    arquivo_grupo2 = '/home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/resumo/F1-Measure-svm-Noise-L2-.csv'
     # Especifique o caminho do arquivo de saída para gravar os resultados-series normais
 
-    pasta_saida = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados-series normais/resumo/'
+    pasta_saida = '/home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/resumo/'
     arquivo_saida = os.path.join(pasta_saida, 'Resultados_T_Student.csv')
 
     with open(arquivo_saida, 'a') as f:
@@ -70,8 +70,8 @@ def testTStudent(): #se os dados servem como distribuição normal
             # Verifica se a coluna 'F1-Measure' está presente em ambos os arquivos
             if 'F1-Measure' in df_grupo1.columns and 'Tempo Processa Sensor' in df_grupo2.columns:
                 # Seleciona a coluna 'F1-Measure' para cada grupo
-                grupo1 = df_grupo1['Tempo Processa Sensor']
-                grupo2 = df_grupo2['Tempo Processa Sensor']
+                grupo1 = df_grupo1['F1-Measure']
+                grupo2 = df_grupo2['F1-Measure']
 
 
                 if len(grupo1) > 1 and len(grupo2) > 1:
@@ -103,12 +103,12 @@ def testTStudent(): #se os dados servem como distribuição normal
 def testMannWhitney():
 
     # Especifique o caminho do arquivo para cada grupo
-    arquivo_grupo1 = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados-temperatura/resumo/F1-Measure-isolation-Noise-L1-.csv'
-    arquivo_grupo2 = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados-temperatura/resumo/F1-Measure-diversidade-Noise-L1-.csv'
+    arquivo_grupo1 = '/home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/resumo/F1-Measure-isolation-Freezing-L2-.csv'
+    arquivo_grupo2 = '/home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/resumo/F1-Measure-diversidade-Freezing-L2-.csv'
     # Especifique o caminho do arquivo de saída para gravar os resultados-series normais
 
-    pasta_saida = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados-temperatura/resumo/'
-    arquivo_saida = os.path.join(pasta_saida, 'Resultados_mann_whitney_TempoProcessamento.csv')
+    pasta_saida = '/home/kathiani/PycharmProjects/Algoritmos_Validacao_AjusteMatrizConfusao/src/resultados-ajustes/resumo/'
+    arquivo_saida = os.path.join(pasta_saida, 'Resultados_mann_whitney_F1-Measure.csv')
 
 
     with open(arquivo_saida, 'a') as f:
@@ -120,10 +120,10 @@ def testMannWhitney():
             df_grupo2 = pd.read_csv(arquivo_grupo2)
 
             # Verifica se a coluna 'F1-Measure' está presente em ambos os arquivos
-            if 'F1-Measure' in df_grupo1.columns and 'Tempo Processa Sensor' in df_grupo2.columns:
+            if 'F1-Measure' in df_grupo1.columns and 'F1-Measure' in df_grupo2.columns:
                 # Seleciona a coluna 'F1-Measure' para cada grupo
-                grupo1 = df_grupo1['Tempo Processa Sensor']
-                grupo2 = df_grupo2['Tempo Processa Sensor']
+                grupo1 = df_grupo1['F1-Measure']
+                grupo2 = df_grupo2['F1-Measure']
 
                 # Verifica se ambos os grupos têm dados suficientes para o teste
                 if len(grupo1) > 1 and len(grupo2) > 1:

@@ -1,0 +1,17 @@
+Número do Sensor: 25
+Resultados da Execução: isolation-Bias-L2
+==================================================
+Matriz de Confusão:
+[[6898   14]
+ [1165  563]]
+
+Verdadeiros Positivos (VP): 563
+Verdadeiros Negativos (VN): 6898
+Falsos Positivos (FP): 14
+Falsos Negativos (FN): 1165
+
+Precision: 0.9757
+Recall: 0.3258
+F1-Score: 0.4885
+Acurácia: 0.8635
+==================================================

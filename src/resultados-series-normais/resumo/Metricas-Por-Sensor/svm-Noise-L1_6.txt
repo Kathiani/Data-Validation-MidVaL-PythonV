@@ -1,0 +1,17 @@
+Número do Sensor: 6
+Resultados da Execução: svm-Noise-L1
+==================================================
+Matriz de Confusão:
+[[1177 6599]
+ [  64  800]]
+
+Verdadeiros Positivos (VP): 800
+Verdadeiros Negativos (VN): 1177
+Falsos Positivos (FP): 6599
+Falsos Negativos (FN): 64
+
+Precision: 0.1081
+Recall: 0.9259
+F1-Score: 0.1936
+Acurácia: 0.2288
+==================================================

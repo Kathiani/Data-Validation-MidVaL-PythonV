@@ -1,0 +1,17 @@
+Arquivo,Média F1-Measure,Média Accuracy,Média Tempo Processamento
+F1-Measure-svm-LossAccuracy-L1-.csv,0.0,0.75,0.00037634372711180003
+F1-Measure-svm-Freezing-L1-.csv,0.0,0.5,0.00033402442932125003
+F1-Measure-isolation-LossAccuracy-L2-.csv,0.0,0.65,0.0456798076629638
+F1-Measure-svm-Freezing-L2-.csv,0.0,0.5,0.0003473758697509
+F1-Measure-svm-LossAccuracy-L2-.csv,0.0,0.75,0.00032269954681395
+F1-Measure-isolation-Bias-L1-.csv,0.5714285714285715,0.85,0.044237971305847154
+F1-Measure-isolation-Noise-L1-.csv,0.5714285714285715,0.85,0.04555249214172355
+F1-Measure-isolation-Freezing-L2-.csv,0.0,0.45,0.044265270233154255
+F1-Measure-isolation-Bias-L2-.csv,0.0,0.7,0.04754769802093505
+F1-Measure-svm-Bias-L1-.csv,0.25,0.7,0.00034987926483145
+F1-Measure-isolation-Freezing-L1-.csv,0.0,0.45,0.045073986053466755
+F1-Measure-svm-Noise-L2-.csv,0.4444444444444445,0.75,0.00034952163696284997
+F1-Measure-isolation-Noise-L2-.csv,0.3333333333333333,0.8,0.044349670410156194
+F1-Measure-svm-Noise-L1-.csv,0.5,0.8,0.00035274028778075
+F1-Measure-isolation-LossAccuracy-L1-.csv,0.22857142857142856,0.74,0.04739603996276852
+F1-Measure-svm-Bias-L2-.csv,0.0,0.55,0.00033736228942865

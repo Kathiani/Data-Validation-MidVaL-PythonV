@@ -1,0 +1,17 @@
+Número do Sensor: 7
+Resultados da Execução: diversidade-LossAccuracy-L2
+==================================================
+Matriz de Confusão:
+[[6910    2]
+ [1712   16]]
+
+Verdadeiros Positivos (VP): 16
+Verdadeiros Negativos (VN): 6910
+Falsos Positivos (FP): 2
+Falsos Negativos (FN): 1712
+
+Precision: 0.8889
+Recall: 0.0093
+F1-Score: 0.0183
+Acurácia: 0.8016
+==================================================

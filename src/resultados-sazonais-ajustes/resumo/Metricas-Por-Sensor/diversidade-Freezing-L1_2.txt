@@ -1,0 +1,17 @@
+Número do Sensor: 2
+Resultados da Execução: diversidade-Freezing-L1
+==================================================
+Matriz de Confusão:
+[[4320    0]
+ [4320    0]]
+
+Verdadeiros Positivos (VP): 0
+Verdadeiros Negativos (VN): 4320
+Falsos Positivos (FP): 0
+Falsos Negativos (FN): 4320
+
+Precision: 0.0000
+Recall: 0.0000
+F1-Score: 0.0000
+Acurácia: 0.5000
+==================================================

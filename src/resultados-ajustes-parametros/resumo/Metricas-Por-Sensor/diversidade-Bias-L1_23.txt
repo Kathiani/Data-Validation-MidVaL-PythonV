@@ -1,0 +1,17 @@
+Número do Sensor: 23
+Resultados da Execução: diversidade-Bias-L1
+==================================================
+Matriz de Confusão:
+[[7767    9]
+ [   0  864]]
+
+Verdadeiros Positivos (VP): 864
+Verdadeiros Negativos (VN): 7767
+Falsos Positivos (FP): 9
+Falsos Negativos (FN): 0
+
+Precision: 0.9897
+Recall: 1.0000
+F1-Score: 0.9948
+Acurácia: 0.9990
+==================================================

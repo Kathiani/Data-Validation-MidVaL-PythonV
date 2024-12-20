@@ -1,0 +1,11 @@
+Arquivo,Média F1-Measure,Média Accuracy,Média Tempo Processamento
+F1-Measure-svm-Bias-L1-.csv,0.21605758770183237,0.8375204673589504,0.562267459763421
+F1-Measure-svm-Bias-L2-.csv,0.28644296791465934,0.8211488349876348,0.5489590962727865
+F1-Measure-svm-Noise-L1-.csv,0.7119565341616743,0.7880116737219328,0.5278350803587172
+F1-Measure-svm-Noise-L2-.csv,0.4816102622316297,0.7258769348603443,0.5662343343098958
+
+ # Definir os parâmetros
+  start_time = time.time()
+                # Ajustar o modelo One-Class Svm
+                svm = OneClassSVM(gamma=0.1, nu=0.2)
+                svm.fit(data)
