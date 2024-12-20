@@ -1,0 +1,4 @@
+Sensor,Grupo de Execução,Precision,Recall,F1-Measure,Tempo Processa Sensor
+1,diversidade-Bias-L1,1.0,1.0,1.0,0.0014035701751708984
+2,diversidade-Bias-L1,1.0,1.0,1.0,0.0014412403106689453
+3,diversidade-Bias-L1,1.0,1.0,1.0,0.0014069080352783203

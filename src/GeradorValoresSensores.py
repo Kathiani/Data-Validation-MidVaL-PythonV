@@ -5,7 +5,7 @@ import random
 
 def gerar_dados_aleatoriamente(num_sensors, indices_erroneos, pasta_dadoscorretos, pasta_dadosincorretos):
     for i in range(1, num_sensors + 1):
-        normal_data = np.random.normal(loc=42, scale=0.5, size = 8640)  # Dados normais, 8640
+        normal_data = np.random.normal(loc=42, scale=0.5, size = 15)  # Dados normais, 8640
         normal_data = np.round(normal_data).astype(int)
         nomesensor = "temperatura" + str(i)
 
@@ -166,10 +166,10 @@ def gerar_dados():
 # Configurar a quantidade de indices, os lotes e os tipos de sequências {sazonais e não-sazonais}
 
     num_sensors = 3
-    indices_erroneos = 1728
+    indices_erroneos = 5
 
-    pasta_dadoscorretos = '/home/kathiani/midval/dados/temperatura-corrigidos/corretos/L2'
-    pasta_dadosincorretos = '/home/kathiani/midval/dados/temperatura-corrigidos/incorretos/L2'
+    pasta_dadoscorretos = '/home/kathiani/midval/dados/temperatura-corrigidos-teste/corretos/L1'
+    pasta_dadosincorretos = '/home/kathiani/midval/dados/temperatura-corrigidos-teste/incorretos/L1'
 
     if not os.path.exists(pasta_dadoscorretos):
         os.makedirs(pasta_dadoscorretos)

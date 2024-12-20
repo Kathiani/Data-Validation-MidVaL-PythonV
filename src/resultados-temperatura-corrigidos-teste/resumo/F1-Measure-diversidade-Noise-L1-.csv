@@ -1,0 +1,4 @@
+Sensor,Grupo de Execução,Precision,Recall,F1-Measure,Tempo Processa Sensor
+1,diversidade-Noise-L1,1.0,0.5,0.6666666666666666,0.0014455318450927734
+2,diversidade-Noise-L1,1.0,1.0,1.0,0.0014185905456542969
+3,diversidade-Noise-L1,0.8333333333333334,0.5,0.625,0.0014271736145019531

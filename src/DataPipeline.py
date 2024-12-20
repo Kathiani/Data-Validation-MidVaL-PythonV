@@ -11,10 +11,10 @@ import os
 
 if __name__ == "__main__":
 
-    pasta_dadoscorretos = '/home/kathiani/midval/dados/temperatura/corretos'
-    pasta_dadosincorretos = '/home/kathiani/midval/dados/temperatura/incorretos'
-    pasta_resultados = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados-temperatura-sazonais'
-    pasta_resumo = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados-temperatura-sazonais/resumo'
+    pasta_dadoscorretos = '/home/kathiani/midval/dados/temperatura-corrigidos-teste/corretos'
+    pasta_dadosincorretos = '/home/kathiani/midval/dados/temperatura-corrigidos-teste/incorretos'
+    pasta_resultados = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados-temperatura-corrigidos-teste'
+    pasta_resumo = '/home/kathiani/PycharmProjects/Algoritmos-Validacao/src/resultados-temperatura-corrigidos-teste/resumo'
     if not os.path.exists(pasta_resultados):
         os.makedirs(pasta_resultados)
 
@@ -22,12 +22,12 @@ if __name__ == "__main__":
         os.makedirs(pasta_resumo)
 
     tipo_sensor = 'temperatura'
-    n_sensores = 1
+    n_sensores = 3
 
 
     startisolationforest(n_sensores,'isolation', pasta_dadosincorretos, pasta_resultados, pasta_resumo, tipo_sensor) #fixos os números dos lotes
     startsvms(n_sensores,'svm', pasta_dadosincorretos, pasta_resultados, pasta_resumo, tipo_sensor)
-    #startcalculocorrelacaot(n_sensores, 'diversidade', pasta_dadoscorretos, pasta_dadosincorretos, pasta_resultados, pasta_resumo, tipo_sensor)
+    startcalculocorrelacaot(n_sensores, 'diversidade', pasta_dadoscorretos, pasta_dadosincorretos, pasta_resultados, pasta_resumo, tipo_sensor)
     computa_media_geral_metricas(pasta_resultados, pasta_resumo)
 
 

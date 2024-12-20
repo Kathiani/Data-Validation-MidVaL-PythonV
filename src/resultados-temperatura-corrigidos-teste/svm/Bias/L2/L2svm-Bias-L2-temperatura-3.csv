@@ -1,0 +1,16 @@
+Dado,Label,Predição,Avaliação
+53,incorreto,P-incorreto,VP
+41,correto,P-incorreto,FN
+54,incorreto,P-correto,FP
+42,correto,P-correto,VN
+58,incorreto,P-incorreto,VP
+59,incorreto,P-correto,FP
+60,incorreto,P-correto,FP
+42,correto,P-correto,VN
+42,correto,P-correto,VN
+64,incorreto,P-incorreto,VP
+42,correto,P-correto,VN
+65,incorreto,P-correto,FP
+43,correto,P-correto,VN
+67,incorreto,P-incorreto,VP
+41,correto,P-incorreto,FN
